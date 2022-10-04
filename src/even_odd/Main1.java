@@ -4,17 +4,13 @@ import java.util.Scanner;
 
 public class Main1 {
 
-    private String getEvenOdd(int num) {
+    private static String getEvenOdd(int num) {
         if(num%2 == 0) {
             return "짝수";
         }
         return "홀수";
     }
 
-    public void printEvenOddStatement(int first, int second) {
-        System.out.printf("%s+%s=%s", getEvenOdd(first), getEvenOdd(second), getEvenOdd(first + second));
-
-    }
 
     public static void main(String[] args) {
         /*정수 두개가 입력으로 들어온다.
@@ -30,11 +26,13 @@ public class Main1 {
         int first = sc.nextInt();
         int second = sc.nextInt();
 
-        Main1 main = new Main1();
-        main.printEvenOddStatement(first, second);
-
+        StringBuilder sb = new StringBuilder();
+        sb.append(getEvenOdd(first));
+        sb.append("+");
+        sb.append(getEvenOdd(second));
+        sb.append("=");
+        sb.append(getEvenOdd(first + second));
+        System.out.println(sb.toString());
     }
-
-
 
 }
