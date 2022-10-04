@@ -11,20 +11,26 @@ public class CoinTest {
         System.out.print("금액을 넣으세요 : ");
         int coin = sc.nextInt();
 
-        int[] unit = {50000, 10000, 5000, 1000, 500, 100, 50, 10};
-        int[] cnt = new int[8];
+        /*int[] unit = {50000, 10000, 5000, 1000, 500, 100, 50, 10};
 
-        for (int i = 0; i < unit.length; i++) {
-            cnt[i] = coin/unit[i];
+        for (int i = 0; i < 6; i++) {
+            System.out.printf("%d원 : %d개\n", unit[i], coin/unit[i]);
             coin %= unit[i];
-        }
+        }*/
 
-        // 0장(개)이상만 출력
-        for (int i = 0; i < cnt.length; i++) {
-            if(cnt[i] > 0) {
-                System.out.println(unit[i] + "원은 " + cnt[i] + "장(개) 입니다.");
-            }
-        }
+        int curr50000 = 50000;
+        int curr10000 = 10000;
+        int curr5000 = 5000;
+        int curr1000 = 1000;
+        int curr500 = 500;
+        int curr100 = 100;
+
+        System.out.printf("50000원권 : %d장 나머지 : %d원\n", coin/curr50000, coin % curr50000);
+        System.out.printf("10000원권 : %d장 나머지 : %d원\n", coin/curr10000, coin % curr10000);
+        System.out.printf("5000원권 : %d장 나머지 : %d원\n", coin/curr5000, coin % curr5000);
+        System.out.printf("1000원권 : %d장 나머지 : %d원\n", coin/curr1000, coin % curr1000);
+        System.out.printf("500원 동전 : %d개 나머지 : %d원\n", coin/curr500, coin % curr500);
+        System.out.printf("100원 동전 : %d개 나머지 : %d원\n", coin/curr100, coin % curr100);
     }
 
 }
