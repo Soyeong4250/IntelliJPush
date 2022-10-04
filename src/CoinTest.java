@@ -6,10 +6,10 @@ public class CoinTest {
     public static void main(String[] args) {
         // 현금으로 돈을 받고 25000원을 거슬러 주어야 합니다.
         // 각 화폐 단위별로 몇 장(개)을 거슬러주어야 할까요?
-        Scanner sc = new Scanner(System.in);
+        // Scanner sc = new Scanner(System.in);
 
-        System.out.print("금액을 넣으세요 : ");
-        int coin = sc.nextInt();
+        // System.out.print("금액을 넣으세요 : ");
+        int coin = 25000;
 
         // 1단계. 각 화폐 단위를 변수로 지정하고, 주어진 금액을 각 화폐 단위로 환산 & 나머지 출력
         int curr50000 = 50000;
@@ -44,6 +44,8 @@ public class CoinTest {
         coin %= 50;
         System.out.printf("10원 동전 : %d개 나머지 : %d원\n", coin/10, coin % 10);
         coin %= 10;
+
+        // sc.close();
     }
 
 }
