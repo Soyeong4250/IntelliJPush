@@ -19,7 +19,8 @@ public class CoinTest {
             coin %= unit[i];
         }
 
-        for (int i = 0; i < unit.length; i++) {
+        // 0장(개)이상만 출력
+        for (int i = 0; i < cnt.length; i++) {
             if(cnt[i] > 0) {
                 System.out.println(unit[i] + "원은 " + cnt[i] + "장(개) 입니다.");
             }
