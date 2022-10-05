@@ -1,18 +1,22 @@
 public class Calculator {
 
-    public static void plus (int first, int second) {
-        System.out.println(first + second);
+    public void plus (int a, int b) {
+        System.out.println(a + b);
     }
 
-    public static void minus (int first, int second) {
-        System.out.println(first - second);
+    public void minus (int a, int b) {
+        System.out.println(a - b);
     }
 
-    public static void multiple (int first, int second) {
-        System.out.println(first * second);
+    public void multiple (int a, int b) {
+        System.out.println(a * b);
     }
 
-    public static void divide (int first, int second) {
-        System.out.println(first / second);
+    public void divide (int a, int b) {
+        System.out.println(a / b);
+    }
+
+    public void divide2(int a, int b) {
+        System.out.println((float)a/b);
     }
 }
