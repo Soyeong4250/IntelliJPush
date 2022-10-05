@@ -1,3 +1,5 @@
+package calculator1;
+
 public class RandomCalculator {
     private int r;
     private NumberCreator random;

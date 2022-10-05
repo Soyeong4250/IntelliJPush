@@ -1,3 +1,5 @@
+package calculator1;
+
 public class RandomNumberCreator implements NumberCreator{
     @Override
     public int randomNumberCreator() {
