@@ -3,10 +3,12 @@ package collection;
 import java.util.List;
 import java.util.ArrayList;
 
+
 public class Names {
     private List<String> students = new ArrayList<>();
+    private List<Student> studentObject = new ArrayList<>();
 
-    public List<String> getNames() {
+    public List<String> setNames() {
         this.students.add("권하준");
         this.students.add("조성윤");
         this.students.add("안예은");

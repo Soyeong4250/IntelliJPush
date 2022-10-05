@@ -11,7 +11,7 @@ public class LikeLion2th {
 
     public LikeLion2th() {
         Names names = new Names();
-        this.students = names.getNames();
+        this.students = names.setNames();
     }
 
     // 멋사자 2기 학생의 이름이 들어있는 list를 return 하는 method
