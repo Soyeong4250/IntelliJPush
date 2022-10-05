@@ -11,4 +11,4 @@ this.studentObjs.add(new Student(2,정해성,https://github.com/KimGunWoo9595/Li
 this.studentObjs.add(new Student(2,하찬희,https://github.com/KimKiheon/LikeLion)
 this.studentObjs.add(new Student(3,박도아,https://github.com/kny3037/java-exercise)
 this.studentObjs.add(new Student(2,유경준,https://github.com/KimDohyoun79/remote_Lion.git)
-1this.studentObjs.add(new Student(,고다니엘,https://github.com/kimkimj/create-repo1)
+this.studentObjs.add(new Student(1,고다니엘,https://github.com/kimkimj/create-repo1)

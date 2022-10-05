@@ -3,12 +3,11 @@ package collection;
 import java.util.List;
 import java.util.ArrayList;
 
-// Rename 단축키 : Shift+F6
-// 생성자 단축키 : Alt + Ins / Ctrl + a
-
 public class LikeLion2th {
     private List<String> students = new ArrayList<>();
     private List<Student> studentObjs = new ArrayList<>();
+
+    Names names = new Names();
     public LikeLion2th() {
         Names names = new Names();
         this.students = names.getNames();
