@@ -25,6 +25,5 @@ public class Main {
         specificNumberCalculator.minus(50);  // -150
         specificNumberCalculator.multiple(50);  // 10000
         specificNumberCalculator.divide(50);  // 0.25
-
     }
 }
