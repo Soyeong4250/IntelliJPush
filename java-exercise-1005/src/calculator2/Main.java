@@ -17,7 +17,7 @@ public class Main {
         Calculator randomNumberCalculator = new Calculator(numberGenerator);
         randomNumberCalculator.plus(30);
         randomNumberCalculator.minus(30);
-        randomNumberCalculator.multiple(30);  
+        randomNumberCalculator.multiple(30);
         randomNumberCalculator.divide(30);
 
         Calculator specificNumberCalculator = new Calculator(new SpecificNumberGenerator(), 200);
