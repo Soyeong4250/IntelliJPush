@@ -14,17 +14,29 @@ public class FileExercise {
             System.out.println(file);
         }
     }
+
     public char readAChar (String filename) throws IOException {
         FileReader fileReader = new FileReader(filename);
+        return (char)fileReader.read();
+    }
 
-        return (char) fileReader.read();
+    public String readChars (String filename) throws IOException {
+        FileReader fileReader = new FileReader(filename);
+        String str = "";
+        str += (char)fileReader.read();
+        str += (char)fileReader.read();
+        return str;
     }
 
     public static void main(String[] args) throws IOException {
-       FileExercise fileExercise = new FileExercise();
-       char c = fileExercise.readAChar("./src/Pojo/a_file.txt");
-
+        FileExercise fileExercise = new FileExercise();
+        char c = fileExercise.readAChar("./src/Pojo/a_file.txt");
+        System.out.println("한 글자 출력");
         System.out.println(c);
+
+        String str = fileExercise.readChars("./src/Pojo/a_file.txt");
+        System.out.println("두 글자 출력");
+        System.out.println(str);
     }
 }
 
