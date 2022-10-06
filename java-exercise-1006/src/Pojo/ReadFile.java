@@ -15,7 +15,7 @@ public class ReadFile {
     }
 
     public char readAByte(String fileName) {
-        char ch = 'a';
+        char ch = ' ';
         try {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             ch = br.readLine().charAt(0);
