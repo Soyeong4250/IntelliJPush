@@ -19,6 +19,7 @@ public class ReadFile {
         try {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             ch = br.readLine().charAt(0);
+            br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("읽어올 파일이 없습니다.");
