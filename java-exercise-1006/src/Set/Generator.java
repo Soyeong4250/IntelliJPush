@@ -1,7 +1,5 @@
 package Set;
 
 public interface Generator {
-
-    char create();
-
+    Character create(int num);
 }
