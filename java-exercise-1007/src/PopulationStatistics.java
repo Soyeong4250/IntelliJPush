@@ -49,9 +49,7 @@ public class PopulationStatistics {
     // 3-1. PopulationMove - parse() 메서드 구현
     public  PopulationMove parse(String data) {
         String[] input = data.split(",");
-        int fromSido = Integer.parseInt(input[0]);
-        int toSido = Integer.parseInt(input[6]);
-        return new PopulationMove(fromSido, toSido);
+        return new PopulationMove(input[0], input[6]);  // 전입, 전출 순서
     }
 
 
