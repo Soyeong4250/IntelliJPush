@@ -2,3 +2,5 @@
 *.class
 */out/
 *.iml
+
+java-exercise-1007/*.txt
