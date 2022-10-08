@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 // 2. PopulationMove 구현하기
 public class PopulationMove {
     private int toSido;  // 전입

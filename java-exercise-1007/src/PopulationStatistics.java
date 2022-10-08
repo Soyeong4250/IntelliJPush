@@ -3,7 +3,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PopulationStatistics {
     public void readAChar(String filename) throws IOException {
@@ -36,7 +38,7 @@ public class PopulationStatistics {
     }
 
     public void readByLine2(String filename) {
-        // 에러를 tyr catch로 안에서 처리
+        // 에러를 try catch로 안에서 처리
         // Files.newBufferedReader() 모던한 스타일
         try(BufferedReader br = Files.newBufferedReader(Paths.get(filename), StandardCharsets.UTF_8)) {
             String line;
@@ -85,7 +87,21 @@ public class PopulationStatistics {
 
     // 4-3. PopulationMove 객체의 데이터들을 String 형태로 변환하기
     public String fromToString(PopulationMove populationMove) {
-        return populationMove.getFromSido() + "," +populationMove.getFromSido() + "\n";
+        return populationMove.getFromSido() + "," +populationMove.getToSido() + "\n";
+    }
+
+    // 5-1. 어디로 이동을 많이 했는지 개수 세는 메소드 구현
+    public Map<String, Integer> getMoveCntMap(List<PopulationMove> pml) {
+        Map<String, Integer> moveCntMap = new HashMap<>();
+        for (PopulationMove pm : pml) {
+            String key = pm.getFromSido() + "," + pm.getToSido();
+            if(moveCntMap.get(key) == null) {
+                moveCntMap.put(key, 1);
+            }
+            moveCntMap.put(key, moveCntMap.get(key)+1);
+            // moveCntMap.put(key, moveCntMap.getOrDefault(key, 0)+1);
+        }
+        return moveCntMap;
     }
 
 
