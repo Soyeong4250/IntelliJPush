@@ -4,3 +4,15 @@
 *.iml
 
 java-exercise-1007/*.txt
+
+*/.gradle/
+
+**/build/
+!src/**/build/
+
+gradle-app.setting
+
+!gradle-wrapper.jar
+
+.gradletasknamecache
+*/gradle/
