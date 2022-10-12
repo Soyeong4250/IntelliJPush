@@ -1,7 +1,10 @@
 import java.util.Scanner;
 
 public class Main_2081 {
-    private void solution(int max, int idx) {
+    private int[] solution() {
+        // 답을 담을 변수들
+        int max = -1;
+        int idx = 0;
         Scanner sc = new Scanner(System.in);
 
         // int[] num = new int[9];
@@ -13,7 +16,7 @@ public class Main_2081 {
             }
         }*/
 
-        int n = -1;
+        int n;
         for (int i = 0; i < 9; i++) {
             n = sc.nextInt();
             if(max < n) {
@@ -22,18 +25,14 @@ public class Main_2081 {
             }
         }
 
-        System.out.println(max);
-        System.out.println(idx);
+        return new int[]{max, idx};
     }
 
     public static void main(String[] args) {
         Main_2081 main = new Main_2081();
-        
-        // 답을 담을 변수들
-        int max = -1;
-        int idx = 0;
 
-        main.solution(max, idx);
-
+        int[] answer = main.solution();
+        System.out.println(answer[0]);
+        System.out.println(answer[1]);
     }
 }

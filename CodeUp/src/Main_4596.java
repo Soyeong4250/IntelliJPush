@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
 public class Main_4596 {
-    private void solution(int max, int r, int c) {
+    private int[] solution(int max, int r, int c) {
         Scanner sc = new Scanner(System.in);
+
 
         /*int[][] num = new int[9][9];
 
@@ -30,8 +31,7 @@ public class Main_4596 {
             }
         }
 
-        System.out.println(max);
-        System.out.printf("%d %d", r, c);
+        return new int[]{max, r, c};
     }
 
     public static void main(String[] args) {
@@ -41,7 +41,9 @@ public class Main_4596 {
         int r = 0;
         int c = 0;
 
-        main.solution(max, r, c);
+        int[] answer = main.solution(max, r, c);
+        System.out.println(answer[0]);
+        System.out.printf("%d %d\n", r, c);
     }
 
 }
