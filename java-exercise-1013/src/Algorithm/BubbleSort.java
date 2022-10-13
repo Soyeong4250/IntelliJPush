@@ -7,13 +7,15 @@ package Algorithm;
 import java.util.Arrays;
 
 public class BubbleSort {
-    private int[] sort(int[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            if(arr[0] > arr[i]) {
-                int temp = arr[0];
-                arr[0] = arr[i];
-                arr[i] = temp;
+    private int[] sort(int[] arr, int i) {
+        for (int j = i+1; j < arr.length; j++) {
+            if (arr[i] > arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
             }
+
+            System.out.println(Arrays.toString(arr));
         }
 
         return arr;
@@ -22,8 +24,8 @@ public class BubbleSort {
     public static void main(String[] args) {
         BubbleSort bubble = new BubbleSort();
 
-        int[] arr = {7, 2, 3, 9, 28, 11};
-        int[] result = bubble.sort(arr);
+        // int[] arr = {7, 2, 3, 9, 28, 11};
+        int[] result = bubble.sort(new int[]{7, 2, 3, 9, 28, 11}, 0);
 
         System.out.println(Arrays.toString(result));
     }
