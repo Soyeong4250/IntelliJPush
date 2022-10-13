@@ -37,4 +37,23 @@ class HospitalParserTest {
 
         assertHospital(hospitalParser.parse(this.line2), "A1104130", "서울특별시 강남구 도산대로 118 (논현동 신사빌딩 2층)", "서울특별시 강남구", "C", 2, "365엠씨의원", "의원");
     }
+
+    @Test
+    @DisplayName("Insert 쿼리를 잘 만드는지")
+    void makeSqlQueryTest() {
+        HospitalParser hospitalParser = new HospitalParser();
+        Hospital hospital = hospitalParser.parse(this.line1);
+        String sql = "INSERT INTO `test-db`.`seoul_hospital`\n" +
+                "(`id`,`address`,`district`,`category`,`emergency_room`,`name`,`subdivision`)\n" +
+                "VALUES\n" +
+                "(\"A1120837\",\n" +
+                "\"서울특별시 금천구 벚꽃로 286 삼성리더스타워 111~114호 (가산동)\",\n" +
+                "\"서울특별시 금천구\",\n" +
+                "\"C\",\n" +
+                "2,\n" +
+                "\"가산기대찬의원\",\n" +
+                "\"의원\");";
+        Assertions.assertEquals(sql, hospital.getSqlInsertQuery());
+
+    }
 }
