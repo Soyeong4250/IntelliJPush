@@ -56,4 +56,5 @@ class HospitalParserTest {
         Assertions.assertEquals(sql, hospital.getSqlInsertQuery());
 
     }
+
 }
