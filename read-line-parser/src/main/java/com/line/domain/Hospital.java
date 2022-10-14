@@ -60,10 +60,18 @@ public class Hospital {
     }
 
     private void setSubdivision() {
-        String[] subdivisionList = {"내과", "치과", "피부과", "성형외과", "외과", "소아과", "가정의학과", "의원"};
+        String[] subdivisionList = {"소아", "피부", "성형", "정형외과", "척추", "교정", "산부인과", "관절", "봉합", "화상", "골절", "영유아", "안과", "가정의학과", "비뇨기과", "치과", "한방", "요양", "의료시설", "보건", "내과", "외과", "병원", "의원"};
         String subdivision = this.name;
         for (String division:subdivisionList) {
-            if(subdivision.contains(division)) {
+            if(subdivision.contains("노인")) {
+                subdivision = "요양";
+                break;
+            }else if(subdivision.contains("재단") || subdivision.contains("센터")) {
+                subdivision = "의료시설";
+                break;
+            }else if(subdivision.contains("조산")) {
+                subdivision = "산부인과";
+            }else if(subdivision.contains(division)) {
                 subdivision = division;
                 break;
             }

@@ -11,6 +11,7 @@ public class FileWriter<T> {
         File file = new File(filename);
         try {
             file.createNewFile();
+            System.out.println("Hava a file generated?" + file.exists());
         }catch (IOException e) {
             throw new RuntimeException(e);
         }
