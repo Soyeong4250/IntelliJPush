@@ -1,18 +1,21 @@
 import java.util.Arrays;
 
 public class InsertionSort {
-    private int[] sort(int[] arr, int i) {
+    private int[] sort(int[] arr) {
         // i = 1 arr[1] j vs arr[0]
         // i = 2 일때 arr[2] j vs arr[1]
         // i = 2 일때 arr[1] j vs arr[0]
-        int j = i;
-        if(arr[j] < arr[j-1]) {
-            // swap
-            int temp = arr[j];
-            arr[j] = arr[j-1];
-            arr[j-1] = temp;
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i; j > 0; j--) {
+                System.out.printf("i:%d j:%d j-1:%d\n", i, j, j-1);
+                if(arr[j] < arr[j-1]) {
+                    // swap
+                    int temp = arr[j];
+                    arr[j] = arr[j-1];
+                    arr[j-1] = temp;
+                }
+            }
         }
-
         return arr;
     }
 
@@ -23,7 +26,7 @@ public class InsertionSort {
         arr = new int[]{5, 8, 6, 2, 4};
 
         InsertionSort insert = new InsertionSort();
-        int[] result = insert.sort(arr, 1);
+        int[] result = insert.sort(arr);
         System.out.println(Arrays.toString(result));
     }
 
