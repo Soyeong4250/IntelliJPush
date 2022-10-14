@@ -72,7 +72,7 @@ public class Hospital {
     }
 
     public String getSqlInsertQuery() {
-        String sql = String.format("INSERT INTO `test-db`.`seoul_hospital`\n" +
+        String sql = String.format("INSERT IGNORE INTO `test-db`.`seoul_hospital`\n" +
                 "(`id`,`address`,`district`,`category`,`emergency_room`,`name`,`subdivision`)\n"+
                 "VALUES\n" +
                 "(\"%s\",\n" +
