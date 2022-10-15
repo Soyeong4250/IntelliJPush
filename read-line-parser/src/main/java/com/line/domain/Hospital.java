@@ -3,6 +3,7 @@ package com.line.domain;
 import java.util.Arrays;
 import java.util.List;
 
+// 5. Hospital 객체 생성 (멤버변수, 생성자(처음에는 모든 멤버변수를 매개변수에 넣어서 생성), getter) 👉 다시 HospitalParse 이동
 public class Hospital {
     private String id;
     private String address;
@@ -13,6 +14,7 @@ public class Hospital {
     private String subdivision;
 
 
+    // 8. HospitalParser에서 넘겨준 데이터에 맞게 매개변수 수정하고 setter 이용하여 데이터 저장하기
     public Hospital(String id, String address, String category, int emergencyRoom, String name) {
         this.id = id;
         this.address = address;

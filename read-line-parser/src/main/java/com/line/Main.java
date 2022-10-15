@@ -9,6 +9,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+
+        // 1. 파일을 읽기 위해서는 파일을 읽을 수 있는 객체 생성 👉 LineReader라는 객체를 생성하자!
         LineReader<Hospital> hospitalLineReader = new LineReader<>(new HospitalParser());
         String filename = "C:\\TECHIT\\강의자료\\서울시 병의원 위치 정보.csv";
         List<Hospital> hospitals = hospitalLineReader.readLines(filename);
@@ -27,6 +29,7 @@ public class Main {
 //        for (Hospital hospital : hospitals) {
 //            lines.add(hospital.getSqlInsertQuery());
 //        }
+
         StringBuilder lines = new StringBuilder();
 
         for (Hospital hospital : hospitals) {
