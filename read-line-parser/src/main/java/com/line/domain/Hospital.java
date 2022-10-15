@@ -15,6 +15,7 @@ public class Hospital {
 
 
     // 8. HospitalParser에서 넘겨준 데이터에 맞게 매개변수 수정하고 setter 이용하여 데이터 저장하기
+    // 👉 Main 클래스로 이동하자
     public Hospital(String id, String address, String category, int emergencyRoom, String name) {
         this.id = id;
         this.address = address;
@@ -81,6 +82,7 @@ public class Hospital {
         this.subdivision = subdivision;
     }
 
+    // 11. SQL문 생성 코드를 작성
     public String getSqlInsertQuery() {
         String sql = String.format("INSERT IGNORE INTO `test-db`.`seoul_hospital`\n" +
                 "(`id`,`address`,`district`,`category`,`emergency_room`,`name`,`subdivision`)\n"+
@@ -95,6 +97,9 @@ public class Hospital {
         return sql;
     }
 
+    // 11-1. getSqlInsertQuery()만 이용하여 sql문을 작성하면 한 줄의 데이터마다 새로운 insert문을 생성함
+    // 👉 나중에 workbench에 파일을 넣어데이터를 생성하였을 때 속도가 매우 느림
+    // 이를 위해 insert문을 한번에 만들기 위한 메서드를 생성 👉 다시 Main으로 이동
     public String getTupleString() {
         String tuple = String.format("\n(\"%s\",\n" +
                         "\"%s\",\n" +
