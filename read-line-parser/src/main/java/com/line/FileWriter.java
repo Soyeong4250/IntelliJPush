@@ -22,7 +22,7 @@ public class FileWriter<T> {
 //        File file = new File(filename);
 //
 //        try {
-//            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF8"));;
+//            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF8"));
 //            for (String query: queries) {
 //                writer.write(query);
 //            }
@@ -37,7 +37,7 @@ public class FileWriter<T> {
         File file = new File(filename);
 
         try {
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF8"));;
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF8"));
             writer.write(queries);
             writer.close();
         } catch (IOException e) {
