@@ -1,4 +1,4 @@
-package com.dbexercise;
+package com.dbexercise.dao;
 
 import com.dbexercise.domain.User;
 
@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.Map;
 
 public class UserDao {
-    public void add() throws SQLException, ClassNotFoundException {
+    public void add(User user) throws SQLException, ClassNotFoundException {
         Map<String, String> env = System.getenv();
         String dbHost = env.get("DB_HOST");
         String dbUser = env.get("DB_USER");
@@ -15,9 +15,12 @@ public class UserDao {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection conn = DriverManager.getConnection(dbHost, dbUser, dbPassword);  // db 연결
         PreparedStatement ps = conn.prepareStatement("INSERT INTO users(id, name, password) VALUES(?, ?, ?)");
-        ps.setString(1, "1");
+        /*ps.setString(1, "1");
         ps.setString(2, "Soyeong");
-        ps.setString(3, "1123");
+        ps.setString(3, "1123");*/
+        ps.setString(1, user.getId());
+        ps.setString(2, user.getName());
+        ps.setString(3, user.getPassword());
 
         int status = ps.executeUpdate();// ctrl + enter
         if(status == 1) {
@@ -59,11 +62,20 @@ public class UserDao {
             }
         }
     }
+    private void selectAll() {
+        Map<String, String> env = System.getenv();
+        String dbHost = env.get("DB_HOST");
+        String dbUser = env.get("DB_USER");
+        String dbPassword = env.get("DB_PASSWORD");
+
+    }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         UserDao userDao = new UserDao();
         // userDao.add();
+        userDao.add(new User("1", "testId", "testPassword"));
         userDao.selectById("0");
-//        userDao.selectAll();
+        userDao.selectAll();
     }
+
 }
