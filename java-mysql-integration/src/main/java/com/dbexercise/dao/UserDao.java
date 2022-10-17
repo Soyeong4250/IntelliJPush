@@ -1,14 +1,15 @@
 package com.dbexercise.dao;
 
 import com.dbexercise.domain.User;
+import com.dbexercise.util.DBClose;
+import com.dbexercise.util.DBConnection;
 
 import java.sql.*;
-import java.util.Map;
 
 public class UserDao {
 
     public void add(User user) throws SQLException, ClassNotFoundException {
-        Connection conn = DBUtil.getConnection();// db 연결
+        Connection conn = DBConnection.getConnection();// db 연결
         PreparedStatement ps = conn.prepareStatement("INSERT INTO users(id, name, password) VALUES(?, ?, ?)");
         /*ps.setString(1, "1");
         ps.setString(2, "Soyeong");
@@ -21,7 +22,7 @@ public class UserDao {
         if(status == 1) {
             System.out.println("데이터 추가 성공");
         }
-        DBUtil.close(conn, ps);
+        DBClose.close(conn, ps);
     }
 
     public void selectById(String sId) throws SQLException {
@@ -30,31 +31,49 @@ public class UserDao {
         ResultSet rs = null;
 
         try {
-            conn = DBUtil.getConnection();  // db 연결
+            conn = DBConnection.getConnection();  // db 연결
             ps = conn.prepareStatement("SELECT id, name, password FROM users WHERE id = ?");
             ps.setString(1, sId);
 
             rs = ps.executeQuery();
-            rs.next();
-            User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
-            System.out.println("id = " + user.getId() + ", name = " + user.getName() + ", password = " + user.getPassword());
+            if(rs.next()) {
+                User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
+                System.out.println("id = " + user.getId() + ", name = " + user.getName() + ", password = " + user.getPassword());
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } finally {
-           DBUtil.close(conn, ps, rs);
+           DBClose.close(conn, ps, rs);
         }
     }
 
-    
+    public void selectAll() throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DBConnection.getConnection();  // db 연결
+            ps = conn.prepareStatement("SELECT id, name, password FROM users");
+
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
+                System.out.println("id = " + user.getId() + ", name = " + user.getName() + ", password = " + user.getPassword());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBClose.close(conn, ps, rs);
+        }
+    }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         UserDao userDao = new UserDao();
         // userDao.add();
         // userDao.add(new User("1", "testId", "testPassword"));
         userDao.selectById("0");
-//        userDao.selectAll();
+        userDao.selectAll();
     }
 
 }
