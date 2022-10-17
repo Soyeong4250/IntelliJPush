@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class Star {
     public static void main(String[] args) {
         /*
         *           i = 0 별이 1개
