@@ -1,7 +1,8 @@
 import java.util.Scanner;
 
 public class RightTriangle {
-    private String letter = "*";
+//    private String letter = "*";
+    private String letter = "#";
 
     public RightTriangle() {
     }
