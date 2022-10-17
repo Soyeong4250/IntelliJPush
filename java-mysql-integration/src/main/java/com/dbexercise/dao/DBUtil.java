@@ -20,6 +20,15 @@ public class DBUtil {
         return conn;
     }
 
+    public static void close(Connection conn, PreparedStatement ps) throws SQLException {
+        try {
+            if (ps != null) ps.close();
+            if (conn != null) conn.close();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void close(Connection conn, PreparedStatement ps, ResultSet rs) throws SQLException {
         try {
             if (rs != null) rs.close();

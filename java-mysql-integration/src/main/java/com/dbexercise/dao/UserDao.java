@@ -21,11 +21,10 @@ public class UserDao {
         if(status == 1) {
             System.out.println("데이터 추가 성공");
         }
-        ps.close();  // PreparedStatement 연결 끊어주기
-        conn.close();
+        DBUtil.close(conn, ps);
     }
 
-    public void selectById(String sId) {
+    public void selectById(String sId) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -44,14 +43,11 @@ public class UserDao {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            try {
-                conn.close();
-                ps.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+           DBUtil.close(conn, ps, rs);
         }
     }
+
+    
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         UserDao userDao = new UserDao();
