@@ -1,5 +1,7 @@
 package com.dbexercise;
 
+import com.dbexercise.domain.User;
+
 import java.sql.*;
 import java.util.Map;
 
@@ -41,13 +43,9 @@ public class UserDao {
             ps.setString(1, sId);
 
             rs = ps.executeQuery();
-            if(rs.next()) {
-                String id = rs.getString("id");
-                String name = rs.getString("name");
-                String password = rs.getString("password");
-                System.out.printf("id = %s, name = %s, password = %s\n", id, name, password);
-                System.out.println("-----------------------");
-            }
+            rs.next();
+            User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
+            System.out.println("id = " + user.getId() + ", name = " + user.getName() + ", password = " + user.getPassword());
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -66,5 +64,6 @@ public class UserDao {
         UserDao userDao = new UserDao();
         // userDao.add();
         userDao.selectById("0");
+//        userDao.selectAll();
     }
 }
