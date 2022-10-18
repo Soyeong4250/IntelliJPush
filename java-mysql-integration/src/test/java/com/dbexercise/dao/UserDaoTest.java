@@ -14,7 +14,7 @@ class UserDaoTest {
     @Test
     @DisplayName("addAndSelect 테스트")
     void addAndSelect() throws SQLException, ClassNotFoundException {
-        UserDao userDao = new UserDao();
+        AWSUserDaoImpl userDao = new AWSUserDaoImpl();
         User user = new User("3", "Mr.Lee", "0000");
         userDao.add(user);
 
