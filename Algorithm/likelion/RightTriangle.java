@@ -1,3 +1,5 @@
+package likelion;
+
 import java.util.Scanner;
 
 public class RightTriangle {

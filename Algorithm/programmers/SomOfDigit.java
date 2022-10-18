@@ -1,4 +1,4 @@
-package Practice;
+package programmers;
 
 public class SomOfDigit {
     private int solution(int n) {

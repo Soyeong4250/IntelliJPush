@@ -1,3 +1,5 @@
+package likelion;
+
 public class SwapExercise {
 
     private static int a = 10;
