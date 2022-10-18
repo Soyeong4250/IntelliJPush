@@ -58,7 +58,7 @@ public class HospitalDao {
 
         try {
             conn = ConnectionMaker.getConnection();// db 연결
-            ps = conn.prepareStatement("INSERT INTO seoul_hospital(id, address, district, category, emergency_room, name, subdivision) VALUES(?, ?, ?, ?, ?, ?, ?)");
+            ps = conn.prepareStatement("INSERT IGNORE INTO seoul_hospital(id, address, district, category, emergency_room, name, subdivision) VALUES(?, ?, ?, ?, ?, ?, ?)");
             ps.setString(1, hospital.getId());
             ps.setString(2, hospital.getAddress());
             ps.setString(3, hospital.getDistrict());

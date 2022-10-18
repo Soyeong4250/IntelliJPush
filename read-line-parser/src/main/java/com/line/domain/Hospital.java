@@ -76,7 +76,7 @@ public class Hospital {
         this.subdivision = subdivision;
     }
 
-    public String getSqlInsertQuery() {
+    /*public String getSqlInsertQuery() {
         String sql = String.format("INSERT IGNORE INTO `test-db`.`seoul_hospital`\n" +
                 "(`id`,`address`,`district`,`category`,`emergency_room`,`name`,`subdivision`)\n"+
                 "VALUES\n" +
@@ -100,7 +100,7 @@ public class Hospital {
                         "\"%s\")", this.id, this.address, this.district, this.category, this.emergencyRoom, this.name, this.subdivision);
 
         return tuple;
-    }
+    }*/
 
     @Override
     public String toString() {

@@ -31,7 +31,7 @@ public class Main {
 //        }
 
 
-        StringBuilder lines = new StringBuilder();
+        /*StringBuilder lines = new StringBuilder();
 
         for (Hospital hospital : hospitals) {
             if(lines.length() == 0) {
@@ -44,8 +44,8 @@ public class Main {
 
         FileWriter<Hospital> hospitalFileWriter = new FileWriter<>();
         String sqlFileName = "hospital_insert.sql";
-        // hospitalFileWriter.createSqlFile(sqlFileName);
-        // hospitalFileWriter.writeLines(lines.toString(), sqlFileName);
+        hospitalFileWriter.createSqlFile(sqlFileName);
+        hospitalFileWriter.writeLines(lines.toString(), sqlFileName);*/
 
         HospitalDao hospitalDao = new HospitalDao();
         hospitalDao.insertData(new Hospital("likelion", "서울특별시 종로구 종로3길 17 D타워, 16-17층", "T", 0, "멋쟁이사자처럼병원"));
