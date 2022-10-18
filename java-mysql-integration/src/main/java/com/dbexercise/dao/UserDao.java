@@ -25,10 +25,11 @@ public class UserDao {
         DBClose.close(conn, ps);
     }
 
-    public void selectById(String sId) throws SQLException {
+    public User selectById(String sId) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
+        User user= null;
 
         try {
             conn = DBConnection.getConnection();  // db 연결
@@ -37,7 +38,7 @@ public class UserDao {
 
             rs = ps.executeQuery();
             if(rs.next()) {
-                User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
+                user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
                 System.out.println("id = " + user.getId() + ", name = " + user.getName() + ", password = " + user.getPassword());
             }
         } catch (SQLException e) {
@@ -45,6 +46,7 @@ public class UserDao {
         } finally {
            DBClose.close(conn, ps, rs);
         }
+        return user;
     }
 
     public void selectAll() throws SQLException {
