@@ -9,6 +9,14 @@ public class ConnectionMaker {
     private static final String dbUser = env.get("DB_USER");
     private static final String dbPassword = env.get("DB_PASSWORD");
 
+    public ConnectionMaker() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(dbHost, dbUser, dbPassword);
     }
