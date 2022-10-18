@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LineReader<T> {
-    // 2. 읽어올 Parser 인터페이스를 만들어보자!
     Parser<T> parser;
     boolean  isRemoveColumnName = true;
 

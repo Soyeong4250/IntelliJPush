@@ -6,7 +6,6 @@ import java.io.*;
 import java.util.List;
 
 public class FileWriter<T> {
-    // 14. 파일 생성
     public void createSqlFile(String filename) {
         File file = new File(filename);
         try {
@@ -17,7 +16,6 @@ public class FileWriter<T> {
         }
     }
 
-    // 15. 생성한 SQL문을 파일에 작성하는 메서드를 구현 👉 Main으로 이동
     // 파일에 SQL문 작성 (List)
 //    public void writeLines(List<String> queries, String filename) {
 //        File file = new File(filename);
