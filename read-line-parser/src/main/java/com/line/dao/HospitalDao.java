@@ -10,10 +10,10 @@ import java.util.List;
 
 public class HospitalDao {
 
-    private AWSConnectionMaker awsConnectionMaker;
+    private ConnectionMaker connectionMaker;
 
     public HospitalDao() {
-        this.awsConnectionMaker = new AWSConnectionMaker();
+        this.connectionMaker = new AWSConnectionMaker();
     }
 
     public List<Hospital> selectAll() throws SQLException {
@@ -23,7 +23,7 @@ public class HospitalDao {
         List<Hospital> hospitalList = null;
 
         try {
-            conn = awsConnectionMaker.getConnection();  // db 연결
+            conn = connectionMaker.getConnection();  // db 연결
             ps = conn.prepareStatement("SELECT id, address, district, category, emergency_room, name, subdivision FROM seoul_hospital");
 
             rs = ps.executeQuery();
@@ -47,7 +47,7 @@ public class HospitalDao {
         Hospital hospital = null;
 
         try {
-            conn = awsConnectionMaker.getConnection();  // db 연결
+            conn = connectionMaker.getConnection();  // db 연결
             ps = conn.prepareStatement("SELECT id, address, district, category, emergency_room, name, subdivision FROM seoul_hospital WHERE id = ?");
             ps.setString(1, sId);
 
@@ -71,7 +71,7 @@ public class HospitalDao {
         int status = 0;
 
         try {
-            conn = awsConnectionMaker.getConnection();// db 연결
+            conn = connectionMaker.getConnection();// db 연결
             ps = conn.prepareStatement("INSERT IGNORE INTO seoul_hospital(id, address, district, category, emergency_room, name, subdivision) VALUES(?, ?, ?, ?, ?, ?, ?)");
             ps.setString(1, hospital.getId());
             ps.setString(2, hospital.getAddress());

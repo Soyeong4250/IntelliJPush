@@ -3,7 +3,7 @@ package com.line.dao;
 import java.sql.*;
 import java.util.Map;
 
-public class AWSConnectionMaker {
+public class AWSConnectionMaker implements ConnectionMaker{
 
     public AWSConnectionMaker() {
         try {
