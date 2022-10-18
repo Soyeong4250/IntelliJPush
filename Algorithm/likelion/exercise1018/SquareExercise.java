@@ -1,4 +1,4 @@
-package likelion;
+package likelion.exercise1018;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package likelion;
+package likelion.exercise1013;
 
 /*
 문제 : {7, 2, 3, 9, 28, 11}에서 가장 작은 숫자가 0번 자리에 오도록 하는 알고리즘 구현

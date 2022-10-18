@@ -1,4 +1,4 @@
-package likelion.even_odd;
+package likelion.exercise1004.even_odd;
 
 import java.util.Scanner;
 
