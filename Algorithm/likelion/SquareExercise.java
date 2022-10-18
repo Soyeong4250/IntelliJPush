@@ -15,6 +15,7 @@ public class SquareExercise {
 
         int n = sc.nextInt();
         squareExercise.printSquare(n);
+        sc.close();
     }
 
 }
