@@ -50,7 +50,7 @@ public class Main {
         HospitalDao hospitalDao = new HospitalDao();
         hospitalDao.insertData(new Hospital("likelion", "서울특별시 종로구 종로3길 17 D타워, 16-17층", "T", 0, "멋쟁이사자처럼병원"));
         System.out.println("--------------------아이디 검색 결과---------------------");
-        hospitalDao.selectById("likelion");
+        hospitalDao.selectById("Testdata");
         System.out.println("--------------------전체 검색 결과---------------------");
         // hospitalDao.selectAll();
 
