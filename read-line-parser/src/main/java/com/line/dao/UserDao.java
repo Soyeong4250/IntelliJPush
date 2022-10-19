@@ -10,9 +10,6 @@ public class UserDao {
 
     private ConnectionMaker connectionMaker;
 
-    public UserDao() {
-        this.connectionMaker = new AWSConnectionMaker();
-    }
 
     public UserDao(ConnectionMaker connectionMaker) {
         this.connectionMaker = connectionMaker;
