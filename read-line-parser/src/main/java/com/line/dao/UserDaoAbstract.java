@@ -6,7 +6,9 @@ import java.sql.*;
 import java.util.List;
 import java.util.Map;
 
-public class UserDao extends UserDaoAbstract{
+public abstract class UserDaoAbstract {
+    public abstract Connection getConnection() throws SQLException;
+
     public List<User> selectAll() throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -82,21 +84,6 @@ public class UserDao extends UserDaoAbstract{
             conn.close();
         }
         return status;
-    }
-
-    public Connection getConnection() throws SQLException {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        Map<String, String> env = System.getenv();
-        String dbHost = env.get("DB_HOST");
-        String dbUser = env.get("DB_USER");
-        String dbPassword = env.get("DB_PASSWORD");
-
-        return DriverManager.getConnection(dbHost, dbUser, dbPassword);
     }
 
 
