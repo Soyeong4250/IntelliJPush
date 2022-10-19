@@ -14,9 +14,8 @@ class UserDaoTest {
     @Test
     @DisplayName("UserInsert 테스트")
     void addTest() throws SQLException {
-        // 기본으로 AWSConnectionMaker()를 할당받기는 하지만 UserDao의 오버로딩이 잘 작동하는지 확인하기 위해 매개변수로 받아봄
-        UserDao userDao = new UserDao(new AWSConnectionMaker());  
-        User user = new User("1", "Soyeong", "1234");
+        UserDao userDao = new UserDaoFactory().awsUserDao();
+        User user = new User("2", "Duhee", "2222");
         Assertions.assertEquals(userDao.insertData(user), 1);
     }
 
@@ -24,7 +23,7 @@ class UserDaoTest {
     @DisplayName("userSelect 테스트")
     void searchByIdTest() throws SQLException {
         String sId = "1";
-        UserDao userDao = new UserDao();
+        UserDao userDao = new UserDaoFactory().awsUserDao();
         String result = userDao.selectById(sId);
         Assertions.assertEquals(result, "1 Soyeong 1234");
     }
