@@ -6,7 +6,14 @@ import java.sql.*;
 import java.util.List;
 import java.util.Map;
 
-public class UserDao extends UserDaoAbstract{
+public class UserDao {
+
+    private ConnectionMaker connectionMaker;
+
+    public UserDao() {
+        this.connectionMaker = connectionMaker;
+    }
+
     public List<User> selectAll() throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -14,7 +21,7 @@ public class UserDao extends UserDaoAbstract{
         List<User> userList = null;
 
         try {
-            conn = getConnection();  // db 연결
+            conn = connectionMaker.getConnection();  // db 연결
             ps = conn.prepareStatement("SELECT id, name, password FROM users");
 
             rs = ps.executeQuery();
@@ -26,9 +33,7 @@ public class UserDao extends UserDaoAbstract{
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            rs.close();
-            ps.close();
-            conn.close();
+            ConnectionClose.close(conn, ps, rs);
         }
         return userList;
     }
@@ -40,7 +45,7 @@ public class UserDao extends UserDaoAbstract{
         User user = null;
 
         try {
-            conn = getConnection();  // db 연결
+            conn = connectionMaker.getConnection();  // db 연결
             ps = conn.prepareStatement("SELECT id, name, password FROM users WHERE id = ?");
             ps.setString(1, sId);
 
@@ -52,9 +57,7 @@ public class UserDao extends UserDaoAbstract{
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            rs.close();
-            ps.close();
-            conn.close();
+            ConnectionClose.close(conn, ps, rs);
         }
         return user.getId() + " " + user.getName() + " " + user.getPassword();
     }
@@ -65,7 +68,7 @@ public class UserDao extends UserDaoAbstract{
         int status = 0;
 
         try {
-            conn = getConnection();  // db 연결
+            conn = connectionMaker.getConnection();  // db 연결
             ps = conn.prepareStatement("INSERT INTO users(id, name, password) VALUES (?, ?, ?)");
             ps.setString(1, user.getId());
             ps.setString(2, user.getName());
@@ -78,25 +81,9 @@ public class UserDao extends UserDaoAbstract{
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            ps.close();
-            conn.close();
+            ConnectionClose.close(conn, ps);
         }
         return status;
-    }
-
-    public Connection getConnection() throws SQLException {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        Map<String, String> env = System.getenv();
-        String dbHost = env.get("DB_HOST");
-        String dbUser = env.get("DB_USER");
-        String dbPassword = env.get("DB_PASSWORD");
-
-        return DriverManager.getConnection(dbHost, dbUser, dbPassword);
     }
 
 
