@@ -11,7 +11,7 @@ public class UserDao {
     private ConnectionMaker connectionMaker;
 
     public UserDao() {
-        this.connectionMaker = connectionMaker;
+        this.connectionMaker = new AWSConnectionMaker();
     }
 
     public List<User> selectAll() throws SQLException {
