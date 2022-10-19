@@ -117,7 +117,7 @@ public class UserDao {
 
         try {
             conn = connectionMaker.getConnection();
-            ps = conn.prepareStatement("DELETE * FROM users");
+            ps = conn.prepareStatement("DELETE FROM users");
 
             status = ps.executeUpdate();
         } catch (SQLException e) {
