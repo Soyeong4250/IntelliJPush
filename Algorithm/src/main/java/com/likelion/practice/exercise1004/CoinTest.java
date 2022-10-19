@@ -1,7 +1,4 @@
-package likelion.exercise1004;
-
-import java.util.Arrays;
-import java.util.Scanner;
+package com.likelion.practice.exercise1004;
 
 public class CoinTest {
 

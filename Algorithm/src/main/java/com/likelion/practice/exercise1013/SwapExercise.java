@@ -1,4 +1,4 @@
-package likelion.exercise1013;
+package com.likelion.practice.exercise1013;
 
 public class SwapExercise {
 

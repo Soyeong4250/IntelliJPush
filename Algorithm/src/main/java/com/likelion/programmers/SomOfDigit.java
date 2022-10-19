@@ -1,4 +1,4 @@
-package programmers;
+package com.likelion.programmers;
 
 public class SomOfDigit {
     private int solution(int n) {
