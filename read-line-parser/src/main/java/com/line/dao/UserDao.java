@@ -64,6 +64,28 @@ public class UserDao {
         return user.getId() + " " + user.getName() + " " + user.getPassword();
     }
 
+    public int getCount() throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int count = 0;
+
+        try {
+            conn = connectionMaker.getConnection();  // db 연결
+            ps = conn.prepareStatement("SELECT COUNT(*) FROM users");
+            rs = ps.executeQuery();
+
+            if(rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionClose.close(conn, ps, rs);
+        }
+        return count;
+    }
+
     public int insertData(User user) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -85,6 +107,25 @@ public class UserDao {
         } finally {
             ConnectionClose.close(conn, ps);
         }
+        return status;
+    }
+
+    public int deleteAll() {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        int status = 0;
+
+        try {
+            conn = connectionMaker.getConnection();
+            ps = conn.prepareStatement("DELETE * FROM users");
+
+            status = ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            ConnectionClose.close(conn, ps);
+        }
+
         return status;
     }
 
