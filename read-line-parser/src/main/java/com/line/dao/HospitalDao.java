@@ -1,6 +1,7 @@
 package com.line.dao;
 
 import com.line.domain.Hospital;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

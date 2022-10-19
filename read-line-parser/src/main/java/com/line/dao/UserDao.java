@@ -1,10 +1,11 @@
 package com.line.dao;
 
 import com.line.domain.User;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.sql.*;
 import java.util.List;
-import java.util.Map;
 
 public class UserDao {
 
