@@ -52,7 +52,11 @@ class UserDaoTest {
     void getCountTest() throws SQLException {
         UserDao userDao = context.getBean("awsUserDao", UserDao.class);
         int cnt = userDao.getCount();
-        Assertions.assertEquals(cnt, 1);
+        assertEquals(1, cnt);
+        userDao.insertData(new User("1", "kyeonghwan", "1234"));
+        assertEquals(2, userDao.getCount());
+        userDao.insertData(new User("2", "sujin", "4321"));
+        assertEquals(3, userDao.getCount());
     }
 
     @Test
