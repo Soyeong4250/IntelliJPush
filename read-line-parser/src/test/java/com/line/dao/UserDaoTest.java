@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -21,36 +22,26 @@ class UserDaoTest {
 
     @Autowired
     ApplicationContext context;
+    UserDao userDao;
 
     @BeforeEach
     void setUp() throws SQLException {
-        UserDao userDao = context.getBean("awsUserDao", UserDao.class);
+        this.userDao = context.getBean("awsUserDao", UserDao.class);
         userDao.deleteAll();
         userDao.insertData(new User("0", "Soyeong", "0000"));
         System.out.println("Before Each");
     }
 
-    /*@Test
-    @DisplayName("userInsert 테스트")
-    void addTest() throws SQLException {
-        UserDao userDao = context.getBean("awsUserDao", UserDao.class);
-        User user = new User("1", "test", "1234");
-        assertEquals(userDao.insertData(user), 1);
-    }
-
     @Test
-    @DisplayName("userSelect 테스트")
-    void searchByIdTest() throws SQLException {
-        String sId = "0";
-        UserDao userDao = context.getBean("awsUserDao", UserDao.class);
-        String result = userDao.selectById(sId);
-        assertEquals(result, "0 Soyeong 0000");
-    }*/
+    void findById() {
+        assertThrows(EmptyResultDataAccessException.class, () -> {
+            userDao.selectById("1");
+        });
+    }
 
     @Test
     @DisplayName("insert, select 테스트")
     void insertAndSelect() throws SQLException {
-        UserDao userDao = context.getBean("awsUserDao", UserDao.class);
         assertEquals(1, userDao.getCount());
 
         User user1 = new User("1", "kyeonghwan", "1123");
@@ -65,7 +56,6 @@ class UserDaoTest {
     @Test
     @DisplayName("getCount 테스트")
     void getCountTest() throws SQLException {
-        UserDao userDao = context.getBean("awsUserDao", UserDao.class);
         int cnt = userDao.getCount();
         assertEquals(1, cnt);
         userDao.insertData(new User("1", "kyeonghwan", "1234"));
@@ -77,7 +67,6 @@ class UserDaoTest {
     @Test
     @DisplayName("deleteAll 테스트")
     void deleteTest() throws SQLException {
-        UserDao userDao = context.getBean("awsUserDao", UserDao.class);
         int cnt = userDao.getCount();
         int status = userDao.deleteAll();
         assertEquals(status, cnt);

@@ -2,6 +2,7 @@ package com.line.dao;
 
 import com.line.domain.User;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 
 import java.sql.*;
@@ -40,7 +41,7 @@ public class UserDao {
         return userList;
     }
 
-    public User selectById(String sId) throws SQLException {
+    public User selectById(String sId) {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -60,6 +61,10 @@ public class UserDao {
             e.printStackTrace();
         } finally {
             ConnectionClose.close(conn, ps, rs);
+        }
+
+        if(user == null) {
+            throw new EmptyResultDataAccessException(1);
         }
         System.out.println(user.getId() + " " + user.getName() + " " + user.getPassword());
         return user;
