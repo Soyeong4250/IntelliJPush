@@ -57,15 +57,15 @@ public class UserDao {
                 user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
 //                System.out.println(user.getId() + " " + user.getName() + " " + user.getPassword());
             }
+            if(user == null) {
+                throw new EmptyResultDataAccessException(1);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             ConnectionClose.close(conn, ps, rs);
         }
 
-        if(user == null) {
-            throw new EmptyResultDataAccessException(1);
-        }
         System.out.println(user.getId() + " " + user.getName() + " " + user.getPassword());
         return user;
     }
