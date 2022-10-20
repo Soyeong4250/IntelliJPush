@@ -23,25 +23,28 @@ class UserDaoTest {
     ApplicationContext context;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws SQLException {
+        UserDao userDao = context.getBean("awsUserDao", UserDao.class);
+        userDao.deleteAll();
+        userDao.insertData(new User("0", "Soyeong", "0000"));
         System.out.println("Before Each");
     }
 
     @Test
-    @DisplayName("UserInsert 테스트")
+    @DisplayName("userInsert 테스트")
     void addTest() throws SQLException {
         UserDao userDao = context.getBean("awsUserDao", UserDao.class);
-        User user = new User("4", "test", "4444");
+        User user = new User("1", "test", "1234");
         Assertions.assertEquals(userDao.insertData(user), 1);
     }
 
     @Test
     @DisplayName("userSelect 테스트")
     void searchByIdTest() throws SQLException {
-        String sId = "1";
+        String sId = "0";
         UserDao userDao = context.getBean("awsUserDao", UserDao.class);
         String result = userDao.selectById(sId);
-        Assertions.assertEquals(result, "1 Soyeong 1234");
+        Assertions.assertEquals(result, "0 Soyeong 0000");
     }
 
     @Test
@@ -49,7 +52,7 @@ class UserDaoTest {
     void getCountTest() throws SQLException {
         UserDao userDao = context.getBean("awsUserDao", UserDao.class);
         int cnt = userDao.getCount();
-        Assertions.assertEquals(cnt, 3);
+        Assertions.assertEquals(cnt, 1);
     }
 
     @Test

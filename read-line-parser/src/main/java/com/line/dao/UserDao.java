@@ -61,6 +61,7 @@ public class UserDao {
         } finally {
             ConnectionClose.close(conn, ps, rs);
         }
+        System.out.println(user.getId() + " " + user.getName() + " " + user.getPassword());
         return user.getId() + " " + user.getName() + " " + user.getPassword();
     }
 
