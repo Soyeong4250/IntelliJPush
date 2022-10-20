@@ -40,7 +40,7 @@ public class UserDao {
         return userList;
     }
 
-    public String selectById(String sId) throws SQLException {
+    public User selectById(String sId) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -62,7 +62,7 @@ public class UserDao {
             ConnectionClose.close(conn, ps, rs);
         }
         System.out.println(user.getId() + " " + user.getName() + " " + user.getPassword());
-        return user.getId() + " " + user.getName() + " " + user.getPassword();
+        return user;
     }
 
     public int getCount() throws SQLException {

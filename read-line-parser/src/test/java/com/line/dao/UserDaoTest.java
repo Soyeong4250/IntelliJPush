@@ -30,12 +30,12 @@ class UserDaoTest {
         System.out.println("Before Each");
     }
 
-    @Test
+    /*@Test
     @DisplayName("userInsert 테스트")
     void addTest() throws SQLException {
         UserDao userDao = context.getBean("awsUserDao", UserDao.class);
         User user = new User("1", "test", "1234");
-        Assertions.assertEquals(userDao.insertData(user), 1);
+        assertEquals(userDao.insertData(user), 1);
     }
 
     @Test
@@ -44,7 +44,22 @@ class UserDaoTest {
         String sId = "0";
         UserDao userDao = context.getBean("awsUserDao", UserDao.class);
         String result = userDao.selectById(sId);
-        Assertions.assertEquals(result, "0 Soyeong 0000");
+        assertEquals(result, "0 Soyeong 0000");
+    }*/
+
+    @Test
+    @DisplayName("insert, select 테스트")
+    void insertAndSelect() throws SQLException {
+        UserDao userDao = context.getBean("awsUserDao", UserDao.class);
+        assertEquals(1, userDao.getCount());
+
+        User user1 = new User("1", "kyeonghwan", "1123");
+        userDao.insertData(user1);
+        assertEquals(2, userDao.getCount());
+        User user = userDao.selectById(user1.getId());
+
+        assertEquals(user1.getName(), user.getName());
+        assertEquals(user1.getPassword(), user.getPassword());
     }
 
     @Test
@@ -65,7 +80,7 @@ class UserDaoTest {
         UserDao userDao = context.getBean("awsUserDao", UserDao.class);
         int cnt = userDao.getCount();
         int status = userDao.deleteAll();
-        Assertions.assertEquals(status, cnt);
+        assertEquals(status, cnt);
     }
 
 }
