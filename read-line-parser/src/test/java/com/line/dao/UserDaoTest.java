@@ -2,6 +2,7 @@ package com.line.dao;
 
 import com.line.domain.User;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,6 +21,11 @@ class UserDaoTest {
 
     @Autowired
     ApplicationContext context;
+
+    @BeforeEach
+    void setUp() {
+        System.out.println("Before Each");
+    }
 
     @Test
     @DisplayName("UserInsert 테스트")
