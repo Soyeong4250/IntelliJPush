@@ -45,6 +45,10 @@ public class Stack02Test {
     @DisplayName("peek 확인")
     void peek() {
         assertEquals(20, st.peek());
+
+        assertThrows(EmptyStackException.class,() -> {
+            st.peek();
+        });
     }
 
     @Test
@@ -61,6 +65,7 @@ public class Stack02Test {
         Stack<Integer> stack = new Stack<>();
         assertThrows(EmptyStackException.class, () -> {
             stack.pop();
+            stack.peek();
         });
     }
 }
