@@ -68,9 +68,8 @@ class UserDaoTest {
     @Test
     @DisplayName("deleteAll 테스트")
     void deleteTest() throws SQLException {
-        int cnt = userDao.getCount();
-        int status = userDao.deleteAll();
-        assertEquals(status, cnt);
+        userDao.deleteAll();
+        assertEquals(0, userDao.getCount());
     }
 
 }

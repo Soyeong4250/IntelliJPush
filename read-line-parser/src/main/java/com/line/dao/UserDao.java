@@ -15,12 +15,12 @@ public class UserDao {
         this.connectionMaker = connectionMaker;
     }
 
-    public void jdbcContextWithStatementStrategy(StatementStrategy stmt) {
+    public void jdbcContextWithStatementStrategy(StatementStrategy st) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = connectionMaker.getConnection();
-            ps = new DeleteAllStrategy().makePreparedStatement(conn);
+            ps = st.makePreparedStatement(conn);
 
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -105,28 +105,9 @@ public class UserDao {
         return count;
     }
 
-    public int add(User user) throws SQLException {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        int status = 0;
-
-        try {
-            conn = connectionMaker.getConnection();  // db 연결
-            ps = conn.prepareStatement("INSERT INTO users(id, name, password) VALUES (?, ?, ?)");
-            ps.setString(1, user.getId());
-            ps.setString(2, user.getName());
-            ps.setString(3, user.getPassword());
-
-            status = ps.executeUpdate();
-            if(status == 1) {
-                System.out.println("데이터 추가 성공");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            ConnectionClose.close(conn, ps);
-        }
-        return status;
+    public void add(User user) throws SQLException {
+        StatementStrategy st = new AddStrategy(user);
+        jdbcContextWithStatementStrategy(st);
     }
 
     public void deleteAll() {
