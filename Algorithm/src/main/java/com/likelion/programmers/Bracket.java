@@ -63,15 +63,4 @@ public class Bracket {
         return stack.isEmpty();
     }
 
-    public static void main(String[] args) {
-        Bracket main = new Bracket();
-        String s = "(())()";
-
-        System.out.println(main.solution(s));
-        System.out.println(main.solution1(s));
-        System.out.println(main.solution2(s));
-        System.out.println(main.solution3(s));
-    }
-
-
 }
