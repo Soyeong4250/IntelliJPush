@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class Bracket {
     // 강사님 방법1 (Stack X)
-    private boolean solution(String s) {
+    public boolean solution(String s) {
         while(s.indexOf("()") >= 0) {
             s = s.replace("()", "");
         }
@@ -12,7 +12,7 @@ public class Bracket {
         return s.length() == 0;
     }
 
-    private boolean solution1(String s) {
+    public boolean solution1(String s) {
         while(s.indexOf("()") >= 0) {
             String[] splitted = s.split("\\(\\)");
             s = String.join("", splitted);
@@ -21,7 +21,7 @@ public class Bracket {
         return s.length() == 0;
     }
     // Stack X
-    private boolean solution2(String s) {
+    public boolean solution2(String s) {
         boolean answer = true;
 
         int result = 0;
@@ -45,7 +45,7 @@ public class Bracket {
         return answer;
     }
 
-    private boolean solution3(String s) {
+    public boolean solution3(String s) {
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
             char bracket = s.charAt(i);
