@@ -1,9 +1,10 @@
 package com.likelion.programmers;
 
+import java.util.Stack;
+
 public class Bracket {
-    // 강사님 방법 (Stack X)
+    // 강사님 방법1 (Stack X)
     private boolean solution(String s) {
-        boolean answer = true;
         while(s.indexOf("()") >= 0) {
             s = s.replace("()", "");
         }
@@ -11,8 +12,16 @@ public class Bracket {
         return s.length() == 0;
     }
 
-    // Stack X
     private boolean solution1(String s) {
+        while(s.indexOf("()") >= 0) {
+            String[] splitted = s.split("\\(\\)");
+            s = String.join("", splitted);
+        }
+
+        return s.length() == 0;
+    }
+    // Stack X
+    private boolean solution2(String s) {
         boolean answer = true;
 
         int result = 0;
@@ -36,12 +45,33 @@ public class Bracket {
         return answer;
     }
 
+    private boolean solution3(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char bracket = s.charAt(i);
+            if(bracket == '(') {
+                stack.push(bracket);
+            }else {
+                if(stack.isEmpty()) {
+                    return false;
+                }else {
+                    stack.pop();
+                }
+            }
+        }
+
+        return stack.isEmpty();
+    }
+
     public static void main(String[] args) {
         Bracket main = new Bracket();
         String s = "(())()";
 
         System.out.println(main.solution(s));
         System.out.println(main.solution1(s));
+        System.out.println(main.solution2(s));
+        System.out.println(main.solution3(s));
     }
+
 
 }
