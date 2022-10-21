@@ -90,7 +90,7 @@ public class UserDao {
         return count;
     }
 
-    public int insertData(User user) throws SQLException {
+    public int add(User user) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
         int status = 0;
