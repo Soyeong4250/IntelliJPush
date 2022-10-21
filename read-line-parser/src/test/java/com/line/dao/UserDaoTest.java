@@ -33,9 +33,10 @@ class UserDaoTest {
     }
 
     @Test
+    @DisplayName("User가 null인 경우")
     void findById() {
         assertThrows(EmptyResultDataAccessException.class, () -> {
-            userDao.selectById("1");
+            userDao.selectById("100");
         });
     }
 
