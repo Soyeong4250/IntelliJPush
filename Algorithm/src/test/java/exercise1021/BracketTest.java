@@ -1,4 +1,4 @@
-package Stack;
+package exercise1021;
 
 import com.likelion.programmers.Bracket;
 import org.junit.jupiter.api.DisplayName;
