@@ -3,23 +3,23 @@ package com.line.dao;
 import com.line.domain.User;
 import org.springframework.dao.EmptyResultDataAccessException;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.List;
 
 public class UserDao {
 
-    private ConnectionMaker connectionMaker;
+    private DataSource dataSource;
 
-
-    public UserDao(ConnectionMaker connectionMaker) {
-        this.connectionMaker = connectionMaker;
+    public UserDao(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     public void jdbcContextWithStatementStrategy(StatementStrategy st) {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = connectionMaker.getConnection();
+            conn = dataSource.getConnection();
             ps = st.makePreparedStatement(conn);
 
             ps.executeUpdate();
@@ -37,7 +37,7 @@ public class UserDao {
         List<User> userList = null;
 
         try {
-            conn = connectionMaker.getConnection();  // db 연결
+            conn = dataSource.getConnection();  // db 연결
             ps = conn.prepareStatement("SELECT id, name, password FROM users");
 
             rs = ps.executeQuery();
@@ -61,7 +61,7 @@ public class UserDao {
         User user = null;
 
         try {
-            conn = connectionMaker.getConnection();  // db 연결
+            conn = dataSource.getConnection();  // db 연결
             ps = conn.prepareStatement("SELECT id, name, password FROM users WHERE id = ?");
             ps.setString(1, sId);
 
@@ -90,7 +90,7 @@ public class UserDao {
         int count = 0;
 
         try {
-            conn = connectionMaker.getConnection();  // db 연결
+            conn = dataSource.getConnection();  // db 연결
             ps = conn.prepareStatement("SELECT COUNT(*) FROM users");
             rs = ps.executeQuery();
 
