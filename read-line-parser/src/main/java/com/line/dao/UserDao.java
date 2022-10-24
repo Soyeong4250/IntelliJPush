@@ -108,16 +108,7 @@ public class UserDao {
     }
 
     public void deleteAll() throws SQLException {
-        excuteSql("delete from users");
-    }
-
-    private void excuteSql(final String query) throws SQLException {
-        this.jdbcContext.workWithStatementStrategy(new StatementStrategy() {
-            @Override
-            public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
-                return conn.prepareStatement(query);
-            }
-        });
+        this.jdbcContext.excuteSql("delete from users");
     }
 
 
