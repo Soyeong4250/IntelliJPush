@@ -13,6 +13,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -70,6 +72,20 @@ class UserDaoTest {
     void deleteTest() throws SQLException {
         userDao.deleteAll();
         assertEquals(0, userDao.getCount());
+    }
+
+    @Test
+    @DisplayName("selectAll 테스트")
+    void selectAllTest() throws SQLException {
+        userDao.deleteAll();
+        List<User> userList = userDao.selectAll();
+        assertEquals(0, userList.size());
+        User user1 = new User("1", "kyeonghwan", "1123");
+        userDao.add(user1);
+        User user2 = new User("2", "sujin", "4321");
+        userDao.add(user2);
+        userList = userDao.selectAll();
+        assertEquals(2, userList.size());
     }
 
 }
