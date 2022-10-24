@@ -107,11 +107,15 @@ public class UserDao {
         });
     }
 
-    public void deleteAll() {
-        jdbcContext.workWithStatementStrategy(new StatementStrategy() {
+    public void deleteAll() throws SQLException {
+        excuteSql("delete from users");
+    }
+
+    private void excuteSql(final String query) throws SQLException {
+        this.jdbcContext.workWithStatementStrategy(new StatementStrategy() {
             @Override
             public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
-                return conn.prepareStatement("DELETE FROM users");
+                return conn.prepareStatement(query);
             }
         });
     }
