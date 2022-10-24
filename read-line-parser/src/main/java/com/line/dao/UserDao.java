@@ -105,13 +105,27 @@ public class UserDao {
         return count;
     }
 
-    public void add(User user) throws SQLException {
-        StatementStrategy st = new AddStrategy(user);
-        jdbcContextWithStatementStrategy(st);
+    public void add(final User user) throws SQLException {
+        jdbcContextWithStatementStrategy(new StatementStrategy() {
+            @Override
+            public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
+                PreparedStatement ps = conn.prepareStatement("INSERT INTO users(id, name, password) VALUES(?, ?, ?);");
+                ps.setString(1, user.getId());
+                ps.setString(2, user.getName());
+                ps.setString(3, user.getPassword());
+
+                return ps;
+            }
+        });
     }
 
     public void deleteAll() {
-        jdbcContextWithStatementStrategy(new DeleteAllStrategy());
+        jdbcContextWithStatementStrategy(new StatementStrategy() {
+            @Override
+            public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
+                return conn.prepareStatement("DELETE FROM users");
+            }
+        });
     }
 
 
