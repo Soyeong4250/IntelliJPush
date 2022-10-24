@@ -9,25 +9,13 @@ import java.util.List;
 
 public class UserDao {
 
-    private DataSource dataSource;
+    private final DataSource dataSource;
+    private final JdbcContext jdbcContext;
+
 
     public UserDao(DataSource dataSource) {
         this.dataSource = dataSource;
-    }
-
-    public void jdbcContextWithStatementStrategy(StatementStrategy st) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = dataSource.getConnection();
-            ps = st.makePreparedStatement(conn);
-
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            ConnectionClose.close(conn, ps);
-        }
+        this.jdbcContext = new JdbcContext(dataSource);
     }
 
     public List<User> selectAll() throws SQLException {
@@ -106,7 +94,7 @@ public class UserDao {
     }
 
     public void add(final User user) throws SQLException {
-        jdbcContextWithStatementStrategy(new StatementStrategy() {
+        jdbcContext.workWithStatementStrategy(new StatementStrategy() {
             @Override
             public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
                 PreparedStatement ps = conn.prepareStatement("INSERT INTO users(id, name, password) VALUES(?, ?, ?);");
@@ -120,7 +108,7 @@ public class UserDao {
     }
 
     public void deleteAll() {
-        jdbcContextWithStatementStrategy(new StatementStrategy() {
+        jdbcContext.workWithStatementStrategy(new StatementStrategy() {
             @Override
             public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
                 return conn.prepareStatement("DELETE FROM users");
