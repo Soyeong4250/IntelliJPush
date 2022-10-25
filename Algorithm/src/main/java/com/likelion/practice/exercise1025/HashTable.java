@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class HashTable {
     private int size = 10000;
+    private int[] table = new int[size];
 
     public HashTable() {
 
@@ -12,6 +13,7 @@ public class HashTable {
 
     public HashTable(int size) {
         this.size = size;
+        this.table = new int[size];
     }
 
     public int hash(String key) {
@@ -20,6 +22,12 @@ public class HashTable {
             asciiSum += key.charAt(i);
         }
         return asciiSum % size;
+    }
+
+    public void insert(String key, Integer value) {
+        int hashCode = hash(key);
+        this.table[hashCode] = value;
+        System.out.println(hashCode + "번 방에 저장이 완료 되었습니다.");
     }
 
     public static void main(String[] args) {
@@ -35,5 +43,11 @@ public class HashTable {
             nameSet.add(hashTable.hash(names[i]));
         }
         System.out.printf("%s %s", names.length, nameSet.size());
+
+        // insert
+        hashTable = new HashTable(200);
+        for (int i = 0; i < names.length; i++) {
+            hashTable.insert(names[i], hashTable.hash(names[i]));
+        }
     }
 }
