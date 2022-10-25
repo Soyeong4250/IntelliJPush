@@ -18,7 +18,7 @@ public class HashFunctionTest {
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("Hash 구현 테스트")
     void solution() {
         assertEquals(53, hashFunction.hash("Kyeongrok"));
     }
