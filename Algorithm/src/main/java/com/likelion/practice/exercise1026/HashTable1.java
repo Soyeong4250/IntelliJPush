@@ -46,6 +46,16 @@ public class HashTable1 {
         table[hashCode].add(new Node(key, value));
     }
 
+    public Integer get(String key) {
+        List<Node> nodes = table[hash(key)];
+        for (Node node:nodes) {
+            if(key.equals(node.getKey())) {
+                return node.getValue();
+            }
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         String[] names = new String[]{"DongyeonKang",
                 "SubinKang", "KwanwunKo", "HyunseokKo", "KyoungdukKoo", "YeonjiGu", "SoyeonKown", "OhsukKwon", "GunwooKim", "KiheonKim", "NayeongKim", "DohyeonKim", "MinkyoungKim", "MinjiKim", "SanghoKim", "SolbaeKim", "YejinKim", "EungjunKim", "JaegeunKim", "JeonghyeonKim", "JunhoKim", "JisuKim", "kimjinah", "HaneulKim", "HeejungKim", "KimoonPark", "EunbinPark", "JeongHoonPark", "JeminPark", "TaegeunPark", "JiwonBae", "SeunggeunBaek", "JihwanByeon", "HeungseopByeon", "JeongHeeSeo", "TaegeonSeo", "SeeYunSeok", "SuyeonSeong", "SeyoelSon", "MinjiSong", "JinwooSong", "hyunboSim", "SominAhn", "JiyoungAhn", "ChangbumAn", "SoonminEom",
@@ -58,7 +68,12 @@ public class HashTable1 {
         for (int i = 0; i < names.length; i++) {
             nameSet.add(hashTable.hash(names[i]));
         }
-        System.out.printf("%s %s", names.length, nameSet.size());
+        System.out.printf("%s %s\n", names.length, nameSet.size());
 
+        hashTable = new HashTable1();
+        for (int i = 0; i < names.length; i++) {
+            hashTable.insert(names[i], hashTable.hash(names[i]));
+        }
+        System.out.printf("%s %s\n", names.length, nameSet.size());
     }
 }
