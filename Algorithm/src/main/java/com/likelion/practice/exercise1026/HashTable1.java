@@ -38,6 +38,14 @@ public class HashTable1 {
         return asciiSum % 1000;
     }
 
+    public void insert(String key, int value) {
+        int hashCode = hash(key);
+        if(table[hashCode] == null) {
+            table[hashCode] = new ArrayList<>();
+        }
+        table[hashCode].add(new Node(key, value));
+    }
+
     public static void main(String[] args) {
         String[] names = new String[]{"DongyeonKang",
                 "SubinKang", "KwanwunKo", "HyunseokKo", "KyoungdukKoo", "YeonjiGu", "SoyeonKown", "OhsukKwon", "GunwooKim", "KiheonKim", "NayeongKim", "DohyeonKim", "MinkyoungKim", "MinjiKim", "SanghoKim", "SolbaeKim", "YejinKim", "EungjunKim", "JaegeunKim", "JeonghyeonKim", "JunhoKim", "JisuKim", "kimjinah", "HaneulKim", "HeejungKim", "KimoonPark", "EunbinPark", "JeongHoonPark", "JeminPark", "TaegeunPark", "JiwonBae", "SeunggeunBaek", "JihwanByeon", "HeungseopByeon", "JeongHeeSeo", "TaegeonSeo", "SeeYunSeok", "SuyeonSeong", "SeyoelSon", "MinjiSong", "JinwooSong", "hyunboSim", "SominAhn", "JiyoungAhn", "ChangbumAn", "SoonminEom",
