@@ -18,4 +18,15 @@ public class HelloController {
         return "Soyeong";
     }
 
+    @GetMapping(value = "/variable1/{variable}")
+    public String getVariable1(@PathVariable String variable) {
+        return variable;
+    }
+
+    @GetMapping(value = "/variable2/{variable}")
+    public String getVariable2(@PathVariable("variable") String var) {
+        return var;
+    }
+
+    
 }
