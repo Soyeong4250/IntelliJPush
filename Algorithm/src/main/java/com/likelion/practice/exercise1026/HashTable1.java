@@ -10,6 +10,23 @@ import java.util.Set;
 
 
 public class HashTable1 {
+    class Node {
+        private String key;
+        private Integer value;
+
+        public Node(String key, Integer value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public String getKey() {
+            return key;
+        }
+
+        public Integer getValue() {
+            return value;
+        }
+    }
 
     List<Node>[] table = new ArrayList[1000];
 
