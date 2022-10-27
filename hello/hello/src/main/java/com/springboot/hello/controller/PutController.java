@@ -1,6 +1,8 @@
 package com.springboot.hello.controller;
 
 import com.springboot.hello.domain.dto.MemberDto;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -26,5 +28,10 @@ public class PutController {
         return memberDto.toString();
     }
 
-    
+    @PutMapping(value = "/member3")
+    public ResponseEntity<MemberDto> postMemberDto3(@RequestBody MemberDto memberDto) {
+        return ResponseEntity
+                .status(HttpStatus.ACCEPTED)
+                .body(memberDto);
+    }
 }
