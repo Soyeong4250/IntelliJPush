@@ -2,6 +2,8 @@ package com.springboot.hello.controller;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1/get-api")
 public class HelloController {
@@ -31,6 +33,22 @@ public class HelloController {
     @GetMapping(value = "/request1")
     public String getRequestParam1 (@RequestParam String name, @RequestParam String email, @RequestParam String organization){
         return name + " " + email + " " + organization;
+    }
+
+    @GetMapping(value = "/request2")
+    public String getRequestParam2(@RequestParam Map<String, String> param) {
+        StringBuilder sb = new StringBuilder();
+
+        for (Map.Entry map : param.entrySet()) {
+            sb.append(map.getKey() + " : " + map.getValue() + "\n");
+        }
+
+
+        /*param.entrySet().forEach(map -> {
+            sb.append(map.getKey() + " : " + map.getValue() + "\n");
+        });*/
+
+        return sb.toString();
     }
 
 }
