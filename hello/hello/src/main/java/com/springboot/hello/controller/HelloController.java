@@ -39,14 +39,15 @@ public class HelloController {
     public String getRequestParam2(@RequestParam Map<String, String> param) {
         StringBuilder sb = new StringBuilder();
 
-        for (Map.Entry map : param.entrySet()) {
+        /*for (Map.Entry map : param.entrySet()) {
             sb.append(map.getKey() + " : " + map.getValue() + "\n");
-        }
+        }*/
 
-
-        /*param.entrySet().forEach(map -> {
+        param.entrySet().forEach(map -> {
             sb.append(map.getKey() + " : " + map.getValue() + "\n");
-        });*/
+        });
+
+        System.out.println("request가 호출 완료되었습니다.");
 
         return sb.toString();
     }
