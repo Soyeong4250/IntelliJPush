@@ -1,5 +1,6 @@
 package com.springboot.hello.controller;
 
+import com.springboot.hello.domain.dto.MemberDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -24,6 +25,11 @@ public class PostController {
         System.out.println("request가 호출 완료되었습니다.");
 
         return sb.toString();
+    }
+
+    @PostMapping(value = "/member2")
+    public String postMemberDto(@RequestBody MemberDto memberDto) {
+        return memberDto.toString();
     }
 
 }
