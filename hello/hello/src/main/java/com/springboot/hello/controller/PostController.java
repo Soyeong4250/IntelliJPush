@@ -13,4 +13,17 @@ public class PostController {
         return "Hello Post API";
     }
 
+    @PostMapping(value = "/member")
+    public String postMember(@RequestBody Map<String, Object> postData) {
+        StringBuilder sb = new StringBuilder();
+
+        for (Map.Entry map : postData.entrySet()) {
+            sb.append(map.getKey() + " : " + map.getValue() + "\n");
+        }
+
+        System.out.println("request가 호출 완료되었습니다.");
+
+        return sb.toString();
+    }
+
 }
