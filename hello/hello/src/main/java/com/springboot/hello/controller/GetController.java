@@ -33,7 +33,7 @@ public class GetController {
 
     @GetMapping(value = "/variable2/{variable}")
     public String getVariable2(@PathVariable("variable") String var) {
-        log.info("variable이 호출 완료되었습니다.");
+        log.info("@PathVariable을 통해 들어온 값 : {}", var);
         return var;
     }
 
