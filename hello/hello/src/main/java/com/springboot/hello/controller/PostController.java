@@ -1,6 +1,8 @@
 package com.springboot.hello.controller;
 
 import com.springboot.hello.domain.dto.MemberDto;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -27,8 +29,9 @@ public class PostController {
         return sb.toString();
     }
 
+    @ApiOperation(value = "POST 메서드 예제", notes = "@RequestBody를 활용한 POST Method")
     @PostMapping(value = "/member2")
-    public String postMemberDto(@RequestBody MemberDto memberDto) {
+    public String postMemberDto(@ApiParam(value = "회원Dto", required = true) @RequestBody MemberDto memberDto) {
         return memberDto.toString();
     }
 
