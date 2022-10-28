@@ -1,13 +1,15 @@
 package com.springboot.hello.domain.dao;
 
-import com.springboot.hello.domain.dto.UserDto;
+import com.springboot.hello.domain.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.List;
 
+@Component
 public class UserDao {
 
     private final JdbcTemplate jdbcTemplate;
@@ -16,12 +18,12 @@ public class UserDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public List<UserDto> selectAll() {
+    public List<User> selectAll() {
         String sql = "select * from users";
-        RowMapper<UserDto> rowMapper = new RowMapper<UserDto>() {
+        RowMapper<User> rowMapper = new RowMapper<User>() {
             @Override
-            public UserDto mapRow(ResultSet rs, int rowNum) throws SQLException {
-                UserDto user = new UserDto(rs.getString("id"), rs.getString("name"), rs.getString("password"));
+            public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+                User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
                 return user;
             }
         };
@@ -29,12 +31,12 @@ public class UserDao {
         return this.jdbcTemplate.query(sql, rowMapper);
     }
 
-    public UserDto selectById(String sId) {
+    public User selectById(String sId) {
         String sql = "select * from users where id = ?";
-        RowMapper<UserDto> rowMapper = new RowMapper<UserDto>() {
+        RowMapper<User> rowMapper = new RowMapper<User>() {
             @Override
-            public UserDto mapRow(ResultSet rs, int rowNum) throws SQLException {
-                UserDto user = new UserDto(rs.getString("id"), rs.getString("name"), rs.getString("password"));
+            public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+                User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
                 return user;
             }
         };
@@ -42,14 +44,14 @@ public class UserDao {
         return this.jdbcTemplate.queryForObject(sql, rowMapper, sId);
     }
 
-    public void add(UserDto user) {
+    public int add(User user) {
         String sql = "insert into users(id, name, password) values (?, ?, ?)";
-        this.jdbcTemplate.update(sql, user.getId(), user.getName(), user.getPassword());
+        return this.jdbcTemplate.update(sql, user.getId(), user.getName(), user.getPassword());
     }
 
-    public void deleteAll() {
+    public int deleteAll() {
         String sql = "delete from users";
-        this.jdbcTemplate.update(sql);
+        return this.jdbcTemplate.update(sql);
     }
 
     public int getCount() {
