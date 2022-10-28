@@ -2,7 +2,7 @@ package com.likelion.programmers;
 
 import java.util.HashSet;
 
-public class Phonekemon {
+public class Pokemon {
     private int solution(int[] nums) {
         /*
         1. 한번에 최대로 고를 수 있는 폰켓몬은 N/2마리
@@ -24,7 +24,7 @@ public class Phonekemon {
     }
 
     public static void main(String[] args) {
-        Phonekemon main = new Phonekemon();
+        Pokemon main = new Pokemon();
 
         int[] nums = {3, 3, 3, 2, 2, 4};
 
