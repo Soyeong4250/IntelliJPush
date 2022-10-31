@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MockExam {
-    private int[] solution(int[] answers) {
+    private List<Integer> solution(int[] answers) {
         /*
         1. 각 수포자의 찍는 방식을 배열에 담아준다
         2. 각 수포자의 정답 개수를 담을 변수 3개 or 3길이의 배열을 선언한다
@@ -34,11 +34,8 @@ public class MockExam {
                 list.add(i+1);
             }
         }
-        int[] result = new int[list.size()];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = list.get(i);
-        }
-        return result;
+
+        return list;
     }
 
     public static void main(String[] args) {
@@ -46,6 +43,6 @@ public class MockExam {
 //        int[] answers = {1, 2, 3, 4, 5};
         int[] answers = {3, 3, 1, 5, 2, 4, 5, 1, 3};
 
-        System.out.println(Arrays.toString(mockExam.solution(answers)));
+        System.out.println(mockExam.solution(answers));
     }
 }
