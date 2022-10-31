@@ -1,5 +1,7 @@
 package com.likelion.programmers;
 
+import java.util.Arrays;
+
 public class MockExam {
     private int[] solution(int[] answers) {
         /*
@@ -9,7 +11,17 @@ public class MockExam {
         4. Math.max() 또는 for문을 이용하여 가장 많이 맞힌 수포자를 구한다.
          */
 
-        int[] result = {};
+        int[] result = new int[3];
+
+        int[] student1 = {1, 2, 3, 4, 5};
+        int[] student2 = {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] student3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+
+        for (int i = 0; i < answers.length; i++) {
+            if(answers[i] == student1[i]) result[0]+=1;
+            if(answers[i] == student2[i]) result[0]+=1;
+            if(answers[i] == student3[i]) result[0]+=1;
+        }
 
         return result;
     }
@@ -18,6 +30,6 @@ public class MockExam {
         MockExam mockExam = new MockExam();
         int[] answers = {1, 2, 3, 4, 5};
 
-        System.out.println(mockExam.solution(answers));
+        System.out.println(Arrays.toString(mockExam.solution(answers)));
     }
 }
