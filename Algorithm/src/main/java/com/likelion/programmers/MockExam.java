@@ -21,9 +21,9 @@ public class MockExam {
         int[] student3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
 
         for (int i = 0; i < answers.length; i++) {
-            if(answers[i] == student1[i]) score[1]+=1;
-            if(answers[i] == student2[i]) score[2]+=1;
-            if(answers[i] == student3[i]) score[3]+=1;
+            if(answers[i] == student1[i % 5]) score[1]+=1;
+            if(answers[i] == student2[i % 8]) score[2]+=1;
+            if(answers[i] == student3[i % 10]) score[3]+=1;
         }
 
         // 배열로 선언 시 크기 동적 할당❌ 👉 List에 담았다가 배열에 다시 담아주기
@@ -43,7 +43,8 @@ public class MockExam {
 
     public static void main(String[] args) {
         MockExam mockExam = new MockExam();
-        int[] answers = {1, 2, 3, 4, 5};
+//        int[] answers = {1, 2, 3, 4, 5};
+        int[] answers = {3, 3, 1, 5, 2, 4, 5, 1, 3};
 
         System.out.println(Arrays.toString(mockExam.solution(answers)));
     }
