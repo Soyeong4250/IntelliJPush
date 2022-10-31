@@ -18,8 +18,6 @@ public class HospitalParser implements Parser<Hospital> {
         hospital.setOpenServiceName(row[1]);
         hospital.setOpenLocalGovernmentCode(Integer.parseInt(row[3]));
         hospital.setManagementNumber(row[4]);
-        /*LocalDateTime date = LocalDateTime.parse(row[5], DateTimeFormatter.ofPattern("yyyy-mm-dd"));
-        hospital.setLicenseDate(date);*/
         int year = Integer.parseInt(row[5].substring(0, 4));
         int month = Integer.parseInt(row[5].substring(4, 6));
         int day = Integer.parseInt(row[5].substring(6, 8));
