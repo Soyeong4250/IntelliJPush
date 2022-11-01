@@ -1,13 +1,12 @@
 package com.likelion.practice.exercise1101;
 
-public class FindPrime {
-    // 템플릿, 콜백 적용
-    boolean someOperation(int a, int b) {
-        return a < b;
-    }
+interface StatementStrategy {
+    boolean compare(int a, int b);
+}
 
-    boolean isPrime(int num) {
-        for (int i = 0; someOperation(i, num); i++) {
+public class FindPrime {
+    boolean isPrime(int num, StatementStrategy stmt) {
+        for (int i = 2; stmt.compare(i, num); i++) {
             if(num % i == 0) return false;
         }
         return true;
@@ -16,6 +15,12 @@ public class FindPrime {
     public static void main(String[] args) {
         FindPrime main = new FindPrime();
 
-        System.out.println(main.isPrime(17));
+        boolean r = main.isPrime(17, new StatementStrategy() {
+            @Override
+            public boolean compare(int a, int b) {
+                return a * a < b;
+            }
+        });
+        System.out.println(r);
     }
 }
