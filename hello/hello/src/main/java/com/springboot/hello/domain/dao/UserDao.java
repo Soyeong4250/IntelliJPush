@@ -12,10 +12,12 @@ import java.util.List;
 @Component
 public class UserDao {
 
+    private final DataSource dataSource;
     private final JdbcTemplate jdbcTemplate;
 
-    public UserDao(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    public UserDao(DataSource dataSource, JdbcTemplate jdbcTemplate) {
+        this.dataSource = dataSource;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     public List<User> selectAll() {
@@ -56,6 +58,10 @@ public class UserDao {
 
     public int getCount() {
         return this.jdbcTemplate.queryForObject("select count(*) from users", Integer.class);
+    }
+
+    public static void main(String[] args) {
+
     }
 
 }
