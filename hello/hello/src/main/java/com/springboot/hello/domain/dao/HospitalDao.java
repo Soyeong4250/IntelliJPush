@@ -27,4 +27,10 @@ public class HospitalDao {
                 hospital.getManagementNumber(), hospital.getLicenseDate(), hospital.getBusinessStatus(), hospital.getBusinessStatusCode(), hospital.getPhone(), hospital.getFullAddress(), hospital.getRoadNameAddress(), hospital.getHospitalName(),
                 hospital.getBusinessTypeName(), hospital.getHealthcareProviderCnt(), hospital.getPatientRoomCnt(), hospital.getTotalNumberOfBeds(), hospital.getTotalAreaSize(), hospital.getId());
     }
+
+
+    public int getCount() {
+        String sql = "select count(id) from `testdb`.`nation_wide_hospitals`;";
+        return this.jdbcTemplate.queryForObject(sql, Integer.class);
+    }
 }
