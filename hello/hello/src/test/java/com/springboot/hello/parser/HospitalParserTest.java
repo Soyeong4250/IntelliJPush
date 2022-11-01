@@ -41,6 +41,30 @@ class HospitalParserTest {
 
     @Test
     @Order(4)
+    @DisplayName("찾고자 하는 병의원 데이터가 잘나오는지")
+    void selectById() {
+        Hospital hospital = hospitalDao.selectById("1");
+
+        assertEquals(1, hospital.getId());
+        assertEquals("의원", hospital.getOpenServiceName());
+        assertEquals(3620000, hospital.getOpenLocalGovernmentCode());
+        assertEquals("PHMA119993620020041100004", hospital.getManagementNumber());
+        assertEquals(LocalDateTime.of(1999, 06, 12, 0, 0, 0), hospital.getLicenseDate());
+        assertEquals(1, hospital.getBusinessStatus());
+        assertEquals(13, hospital.getBusinessStatusCode());
+        assertEquals("062-515-2875", hospital.getPhone());
+        assertEquals("광주광역시 북구 풍향동 565번지 4호 3층", hospital.getFullAddress());
+        assertEquals("광주광역시 북구 동문대로 24, 3층 (풍향동)", hospital.getRoadNameAddress());
+        assertEquals("효치과의원", hospital.getHospitalName());
+        assertEquals("치과의원", hospital.getBusinessTypeName());
+        assertEquals(1, hospital.getHealthcareProviderCnt());
+        assertEquals(0, hospital.getPatientRoomCnt());
+        assertEquals(0, hospital.getTotalNumberOfBeds());
+        assertEquals(52.29f, hospital.getTotalAreaSize());
+    }
+
+    @Test
+    @Order(5)
     @DisplayName("병의원 데이터수 세기")
     void getCount() {
         System.out.printf("전국 병의원 데이터 수 : %d", hospitalDao.getCount());
@@ -48,7 +72,7 @@ class HospitalParserTest {
     }
 
     @Test
-    @Order(5)
+    @Order(6)
     @DisplayName("모든 데이터 삭제 테스트")
     void deleteAll() {
         hospitalDao.deleteAll();
