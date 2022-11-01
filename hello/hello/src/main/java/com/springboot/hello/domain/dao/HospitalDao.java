@@ -2,7 +2,12 @@ package com.springboot.hello.domain.dao;
 
 import com.springboot.hello.domain.Hospital;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 
 @Component
@@ -28,6 +33,10 @@ public class HospitalDao {
                 hospital.getBusinessTypeName(), hospital.getHealthcareProviderCnt(), hospital.getPatientRoomCnt(), hospital.getTotalNumberOfBeds(), hospital.getTotalAreaSize(), hospital.getId());
     }
 
+    public int deleteAll() {
+        String sql = "delete from `testdb`.`nation_wide_hospitals`;";
+        return this.jdbcTemplate.update(sql);
+    }
 
     public int getCount() {
         String sql = "select count(id) from `testdb`.`nation_wide_hospitals`;";
