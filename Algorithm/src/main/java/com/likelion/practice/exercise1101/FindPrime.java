@@ -15,9 +15,8 @@ public class FindPrime {
     public static void main(String[] args) {
         FindPrime main = new FindPrime();
 
-        System.out.println(main.isPrime(13, (a, b) -> (a * a < b)));
-        System.out.println(main.isPrime(17, (a, b) -> (a * a < b)));
+        System.out.println(main.isPrime(13, (a, b) -> (a < b)));
+        System.out.println(main.isPrime(17, (a, b) -> (a < b/2)));
         System.out.println(main.isPrime(19, (a, b) -> (a * a < b)));
-        System.out.println(main.isPrime(20, (a, b) -> (a * a < b)));
     }
 }
