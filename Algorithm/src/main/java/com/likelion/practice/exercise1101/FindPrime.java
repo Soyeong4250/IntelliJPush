@@ -15,12 +15,9 @@ public class FindPrime {
     public static void main(String[] args) {
         FindPrime main = new FindPrime();
 
-        boolean r = main.isPrime(17, new StatementStrategy() {
-            @Override
-            public boolean compare(int a, int b) {
-                return a * a < b;
-            }
-        });
-        System.out.println(r);
+        System.out.println(main.isPrime(13, (a, b) -> (a * a < b)));
+        System.out.println(main.isPrime(17, (a, b) -> (a * a < b)));
+        System.out.println(main.isPrime(19, (a, b) -> (a * a < b)));
+        System.out.println(main.isPrime(20, (a, b) -> (a * a < b)));
     }
 }
