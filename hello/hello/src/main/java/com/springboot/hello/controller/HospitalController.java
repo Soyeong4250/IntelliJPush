@@ -1,9 +1,8 @@
 package com.springboot.hello.controller;
 
 import com.springboot.hello.domain.Hospital;
-import com.springboot.hello.domain.dao.HospitalDao;
+import com.springboot.hello.dao.HospitalDao;
 import com.springboot.hello.domain.dto.HospitalDto;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +15,6 @@ public class HospitalController {
     public HospitalController(HospitalDao hospitalDao) {
         this.hospitalDao = hospitalDao;
     }
-
     @GetMapping("/find/{id}")
     public ResponseEntity<Hospital> findById(@PathVariable int id) {
         Hospital hospital = hospitalDao.selectById(id);
@@ -24,7 +22,6 @@ public class HospitalController {
         if(hospital == null) {
             return ResponseEntity.notFound().build();
         }
-        hospitalDao.add(hospital);
         return ResponseEntity
                 .ok()
                 .body(hospital);
