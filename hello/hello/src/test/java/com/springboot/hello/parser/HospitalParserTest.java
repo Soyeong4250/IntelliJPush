@@ -1,11 +1,11 @@
 package com.springboot.hello.parser;
 
 import com.springboot.hello.domain.Hospital;
-import com.springboot.hello.domain.dao.HospitalDao;
+import com.springboot.hello.dao.HospitalDao;
+import com.springboot.hello.service.HospitalService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Bean;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -27,6 +27,8 @@ class HospitalParserTest {
     @Autowired
     HospitalDao hospitalDao;
 
+    @Autowired
+    HospitalService hospitalService;
 
     @Test
     @Order(3)
@@ -89,14 +91,18 @@ class HospitalParserTest {
     @DisplayName("10만건 이상 데이터 파싱 테스트")
     void onHundredThousandRows() throws IOException {
         String filename = "C:\\TECHIT\\fulldata_01_01_02_P_의원.csv";
-        List<Hospital> hospitalList = hospitalReadLineContext.readLineParser(filename);
-        System.out.printf("파싱된 데이터 개수 : ", hospitalList.size());
+        /* List<Hospital> hospitalList = hospitalReadLineContext.readLineParser(filename);
+        System.out.printf("파싱된 데이터 개수 : %d", hospitalList.size());
         assertTrue(hospitalList.size() > 1000);
-        assertTrue(hospitalList.size() > 10000);
+        assertTrue(hospitalList.size() > 10000);*/
         /*for (int i = 0; i < 10; i++) {
             System.out.println(hospitalList.get(i).getHospitalName());
         }*/
-        System.out.printf("파싱된 데이터 개수 : ", hospitalList.size());
+
+        int cnt = this.hospitalService.insertLargeVolumeHospitalData(filename);
+        assertTrue(cnt > 1000);
+        assertTrue(cnt > 10000);
+        System.out.printf("파싱된 데이터 개수 : %d", cnt);
     }
 
     @Test
