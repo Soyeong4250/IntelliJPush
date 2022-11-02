@@ -31,10 +31,23 @@ public class Prime {
         return cnt;
     }
 
+    private int solution1(int n) {
+        // 에라토스테네스의 체
+         /*
+        1. 소수의 개수를 담을 변수 선언
+        2. 2~n까지 for문과 2~i까지 for문을 중첩하여 i == j가 같으면 cnt+1
+        3. cnt값 return
+         */
+        int cnt = 0;
+
+        return cnt;
+    }
+
 
     public static void main(String[] args) {
         Prime main = new Prime();
 
         System.out.println(main.solution(10));
+        System.out.println(main.solution1(10));
     }
 }
