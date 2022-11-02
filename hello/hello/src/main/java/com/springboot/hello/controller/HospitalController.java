@@ -26,6 +26,18 @@ public class HospitalController {
                 .body(hospitalDao.add(hospital));
     }
 
+    @GetMapping("/find/{id}")
+    public ResponseEntity<Hospital> findById(@PathVariable int id) {
+        Hospital hospital = hospitalDao.selectById(id);
+
+        if(hospital == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity
+                .ok()
+                .body(hospital);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Integer> deleteById(@PathVariable int id) {
         Hospital hospital = hospitalDao.selectById(id);
