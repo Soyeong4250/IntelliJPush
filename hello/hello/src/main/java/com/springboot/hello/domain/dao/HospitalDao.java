@@ -1,6 +1,7 @@
 package com.springboot.hello.domain.dao;
 
 import com.springboot.hello.domain.Hospital;
+import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -11,13 +12,11 @@ import java.time.LocalDateTime;
 
 
 @Component
+@RequiredArgsConstructor
 public class HospitalDao {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public HospitalDao(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
 
     // 11만건의 데이터를 List<Hospital>에서 Hospital로 꺼내어 insert()
     public void add(Hospital hospital) {
