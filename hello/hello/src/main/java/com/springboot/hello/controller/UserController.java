@@ -1,7 +1,7 @@
 package com.springboot.hello.controller;
 
 import com.springboot.hello.domain.User;
-import com.springboot.hello.domain.dao.UserDao;
+import com.springboot.hello.dao.UserDao;
 import com.springboot.hello.domain.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -22,10 +22,23 @@ public class UserController {
     public ResponseEntity<Integer> register(@RequestBody UserDto userDto) {
         User user = new User(userDto.getId(), userDto.getName(), userDto.getPassword());
         log.info(userDto.toString() + "를 호출하였습니다.");
-        userDao.add(user);
         return ResponseEntity
                 .ok()
-                .body(userDao.add(user));  // add 성공 시 반환값 int형이기 때문에
+                .body(userDao.add(user));
+    }
+
+
+    @GetMapping("/find/{id}")
+    public ResponseEntity<User> get(@PathVariable String id) {
+        try {
+            User user = this.userDao.selectById(id);
+            return ResponseEntity.
+                    ok().
+                    body(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     @DeleteMapping("/deleteAll")
