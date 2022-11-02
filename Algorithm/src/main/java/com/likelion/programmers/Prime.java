@@ -35,19 +35,26 @@ public class Prime {
         // 에라토스테네스의 체
          /*
         1. 소수의 개수를 담을 변수 선언
-        2. 2~n까지 for문과 2~i까지 for문을 중첩하여 i == j가 같으면 cnt+1
+        2. 2중 for문을 이용하여 2~n까지 탐색하되 2와 3일 경우에는 소수 이므로 따로 cnt + 1
         3. cnt값 return
          */
         int cnt = 0;
 
         for (int i = 2; i <= n; i++) {
-            for (int j = 2; j <= i; j++) {
-                System.out.println("i = " + i + ", " + "j = " + j);
-                if(i != j && i % j == 0) {  // i와 j가 같지 않고 나누어 떨어진다면 소수❌
+            boolean isPrime = true;
+            if(i == 2 || i == 3) {
+                cnt += 1;
+                continue;
+            }
+
+            for (int j = 2; j <= Math.sqrt(i); j++) {
+                if(i % j == 0) {
+                    isPrime = false;
                     break;
-                }else if(i == j) {  // i가 j로 나누어 떨어지지 않고 i와 j가 같다면 cnt+=1;
-                    cnt += 1;
                 }
+            }
+            if(isPrime) {
+                cnt += 1;
             }
         }
 
