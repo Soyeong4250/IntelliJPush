@@ -40,6 +40,17 @@ public class Prime {
          */
         int cnt = 0;
 
+        for (int i = 2; i <= n; i++) {
+            for (int j = 2; j <= i; j++) {
+                System.out.println("i = " + i + ", " + "j = " + j);
+                if(i != j && i % j == 0) {  // i와 j가 같지 않고 나누어 떨어진다면 소수❌
+                    break;
+                }else if(i == j) {  // i가 j로 나누어 떨어지지 않고 i와 j가 같다면 cnt+=1;
+                    cnt += 1;
+                }
+            }
+        }
+
         return cnt;
     }
 
