@@ -65,6 +65,12 @@ public class HospitalDao {
         return this.jdbcTemplate.update(sql);
     }
 
+    public int deleteById(int sId) {
+        String sql = "delete from `testdb`.`nation_wide_hospitals` where id = ?;";
+
+        return this.jdbcTemplate.update(sql, sId);
+    }
+
     public int getCount() {
         String sql = "select count(id) from `testdb`.`nation_wide_hospitals`;";
         return this.jdbcTemplate.queryForObject(sql, Integer.class);
