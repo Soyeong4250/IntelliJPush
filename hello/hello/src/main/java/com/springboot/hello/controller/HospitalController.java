@@ -15,6 +15,17 @@ public class HospitalController {
     public HospitalController(HospitalDao hospitalDao) {
         this.hospitalDao = hospitalDao;
     }
+
+    @PostMapping("/register")
+    public ResponseEntity<Integer> register(@RequestBody HospitalDto hospitalDto) {
+        Hospital hospital = new Hospital(hospitalDto.getId(), hospitalDto.getOpenServiceName(), hospitalDto.getOpenLocalGovernmentCode(),
+                hospitalDto.getManagementNumber(), hospitalDto.getLicenseDate(), hospitalDto.getBusinessStatus(), hospitalDto.getBusinessStatusCode(), hospitalDto.getPhone(), hospitalDto.getFullAddress(), hospitalDto.getRoadNameAddress(), hospitalDto.getHospitalName(),
+                hospitalDto.getBusinessTypeName(), hospitalDto.getHealthcareProviderCnt(), hospitalDto.getPatientRoomCnt(), hospitalDto.getTotalNumberOfBeds(), hospitalDto.getTotalAreaSize());
+        return ResponseEntity
+                .ok()
+                .body(hospitalDao.add(hospital));
+    }
+
     @GetMapping("/find/{id}")
     public ResponseEntity<Hospital> findById(@PathVariable int id) {
         Hospital hospital = hospitalDao.selectById(id);
@@ -26,4 +37,5 @@ public class HospitalController {
                 .ok()
                 .body(hospital);
     }
+    
 }
