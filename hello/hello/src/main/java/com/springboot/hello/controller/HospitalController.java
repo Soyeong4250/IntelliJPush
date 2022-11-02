@@ -26,16 +26,16 @@ public class HospitalController {
                 .body(hospitalDao.add(hospital));
     }
 
-    @GetMapping("/find/{id}")
-    public ResponseEntity<Hospital> findById(@PathVariable int id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Integer> deleteById(@PathVariable int id) {
         Hospital hospital = hospitalDao.selectById(id);
 
         if(hospital == null) {
             return ResponseEntity.notFound().build();
         }
+        hospitalDao.deleteById(id);
         return ResponseEntity
                 .ok()
-                .body(hospital);
+                .body(hospitalDao.deleteAll());
     }
-    
 }
