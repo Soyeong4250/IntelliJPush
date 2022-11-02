@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class UserRegisterPostReq {
+public class UserDto {
     private String id;
     private String name;
     private String password;
