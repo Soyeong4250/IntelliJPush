@@ -102,7 +102,7 @@ class HospitalParserTest {
         int cnt = this.hospitalService.insertLargeVolumeHospitalData(filename);
         assertTrue(cnt > 1000);
         assertTrue(cnt > 10000);
-        System.out.printf("파싱된 데이터 개수 : %d", cnt);
+        System.out.printf("파싱된 데이터 개수 : %d\n", cnt);
     }
 
     @Test
