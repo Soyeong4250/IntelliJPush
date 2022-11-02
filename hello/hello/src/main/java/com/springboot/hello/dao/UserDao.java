@@ -1,4 +1,4 @@
-package com.springboot.hello.domain.dao;
+package com.springboot.hello.dao;
 
 import com.springboot.hello.domain.User;
 import org.springframework.jdbc.core.JdbcTemplate;
