@@ -2,8 +2,8 @@ package com.likelion.practice.exercise1103;
 
 public class Eratosthenes {
     private void multipleOf(int num) {
-        for(int i = 2; i<=num; i+=2) {
-            System.out.println(i);
+        for(int i = 2; i*2<=num; i++) {
+            System.out.printf("%d, %d\n", i, (2*i) + 2);
         }
     }
 
