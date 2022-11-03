@@ -3,7 +3,7 @@ package com.likelion.practice.exercise1103;
 import java.util.Arrays;
 
 public class Eratosthenes {
-    private void solution(int num) {
+    private int solution(int num) {
         int N = num/2;  // 2씩 증가할 예정이므로 2로 나누어주기
         int[] nums = new int[N-1];
         boolean[] checks = new boolean[nums.length];
@@ -22,6 +22,13 @@ public class Eratosthenes {
                 checks[i] = false;
             }
         }
+
+        int cnt = 0;
+        for (int i = 0; i < checks.length; i++) {
+            if(checks[i]) cnt++;
+        }
+
+        return cnt;
     }
 
     public void print(int[] nums, boolean[] checks) {
@@ -33,6 +40,6 @@ public class Eratosthenes {
     public static void main(String[] args) {
         Eratosthenes main = new Eratosthenes();
 
-        main.solution(100);
+        System.out.println(main.solution(100));
     }
 }
