@@ -16,6 +16,12 @@ public class Eratosthenes {
         // 확인
         print(nums, checks);
 
+        for (int j = 0; j <= N; j++) {  // N == 49
+            int multipleOf = nums[j];
+            for (int i = nums[j] + j; i < nums.length; i += multipleOf) {
+                checks[i] = false;
+            }
+        }
     }
 
     public void print(int[] nums, boolean[] checks) {
