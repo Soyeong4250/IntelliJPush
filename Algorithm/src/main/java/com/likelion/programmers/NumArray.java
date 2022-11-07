@@ -7,7 +7,6 @@ import java.util.List;
 
 public class NumArray {
     private int[] solution(int[] arr, int divisor) {
-        int[] answer = {};
         // 1. array의 각 element 중 divisor로 나누어 떨어지는 값 구하기
         List<Integer> numList = new ArrayList<>();
         for (int i = 0; i < arr.length; i++){
@@ -25,6 +24,10 @@ public class NumArray {
         }
 
         // 3. numList와 길이가 맞는 정답 배열 생성 후 element 옮겨 담기
+        int[] answer = new int[numList.size()];
+        for (int i = 0; i < answer.length; i++) {
+            answer[i] = numList.get(i);
+        }
 
         return answer;
     }
