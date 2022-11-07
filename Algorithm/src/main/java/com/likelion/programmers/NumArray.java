@@ -16,8 +16,13 @@ public class NumArray {
             }
         }
 
-        // 2. 나누어 떨어지는 element가 하나도 없다면  (List의 길이가 0이라면) 배열에 -1을 담고
+        // 2. 나누어 떨어지는 element가 하나도 없다면  (List의 길이가 0이라면) numList에 -1을 담고
         //    나누어 떨어지는 element가 있다면 numList 오름차순 정렬하기
+        if(numList.size() == 0) {
+            numList.add(-1);
+        } else {
+            Collections.sort(numList);
+        }
 
         // 3. numList와 길이가 맞는 정답 배열 생성 후 element 옮겨 담기
 
