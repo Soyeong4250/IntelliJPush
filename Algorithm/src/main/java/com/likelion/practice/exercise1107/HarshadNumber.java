@@ -25,5 +25,8 @@ public class HarshadNumber {
         HarshadNumber harshadNumber = new HarshadNumber();
 
         System.out.println(harshadNumber.isHarshad(10));  // true
+        System.out.println(harshadNumber.isHarshad(12));  // true
+        System.out.println(harshadNumber.isHarshad(11));  // false
+        System.out.println(harshadNumber.isHarshad(13));  // false
     }
 }
