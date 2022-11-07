@@ -1,4 +1,4 @@
-package com.likelion.practice.exercise1107;
+package com.likelion.programmers;
 
 public class HarshadNumber {
 
