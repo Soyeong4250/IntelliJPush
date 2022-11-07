@@ -1,9 +1,6 @@
 package com.likelion.programmers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class NumArray {
     private int[] solution(int[] arr, int divisor) {
@@ -32,11 +29,35 @@ public class NumArray {
         return answer;
     }
 
+    private int[] solution2(int[] arr, int divisor) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (int i = 0; i < arr.length; i++){
+            if(arr[i] % divisor == 0) {
+                pq.offer(arr[i]);
+            }
+        }
+
+        if(pq.isEmpty()) {
+            pq.offer(-1);
+        }
+
+        int[] answer = new int[pq.size()];
+        for (int i = 0; i < answer.length; i++) {
+            answer[i] = pq.poll();
+        }
+        
+        return answer;
+    }
+
     public static void main(String[] args) {
         NumArray numArray = new NumArray();
 
         System.out.println(Arrays.toString(numArray.solution(new int[]{5, 9, 7, 10}, 5)));  // [5, 10]
         System.out.println(Arrays.toString(numArray.solution(new int[]{2, 36, 1, 3}, 1)));  // [1, 2, 3, 36]
         System.out.println(Arrays.toString(numArray.solution(new int[]{3, 2, 6}, 10)));  // [-1]
+
+        System.out.println(Arrays.toString(numArray.solution2(new int[]{5, 9, 7, 10}, 5)));  // [5, 10]
+        System.out.println(Arrays.toString(numArray.solution2(new int[]{2, 36, 1, 3}, 1)));  // [1, 2, 3, 36]
+        System.out.println(Arrays.toString(numArray.solution2(new int[]{3, 2, 6}, 10)));  // [-1]
     }
 }
