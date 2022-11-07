@@ -13,12 +13,17 @@ public class HarshadNumber {
             remainder /= 10;
         }
 
+        // 2. 나누어 떨어지는지 check 하기
+        if(x%sum != 0) {
+            result = false;
+        }
+
         return result;
     }
 
     public static void main(String[] args) {
         HarshadNumber harshadNumber = new HarshadNumber();
 
-        System.out.println(harshadNumber.isHarshad(10));
+        System.out.println(harshadNumber.isHarshad(10));  // true
     }
 }
