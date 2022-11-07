@@ -35,6 +35,8 @@ public class NumArray {
     public static void main(String[] args) {
         NumArray numArray = new NumArray();
 
-        System.out.println(Arrays.toString(numArray.solution(new int[]{5, 9, 7, 10}, 5)));
+        System.out.println(Arrays.toString(numArray.solution(new int[]{5, 9, 7, 10}, 5)));  // [5, 10]
+        System.out.println(Arrays.toString(numArray.solution(new int[]{2, 36, 1, 3}, 1)));  // [1, 2, 3, 36]
+        System.out.println(Arrays.toString(numArray.solution(new int[]{3, 2, 6}, 10)));  // [-1]
     }
 }
