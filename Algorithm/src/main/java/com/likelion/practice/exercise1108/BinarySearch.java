@@ -21,6 +21,7 @@ public class BinarySearch {
                 System.out.println("시작점을 " + start + "(으)로 옮깁니다.");
             } else if(nums[median] == targetNum) {
                 System.out.println(cnt + "번만에 " + targetNum + "을 찾았습니다");
+                System.out.println("현재 위치는 " + median + "입니다.");
                 break;
             }
         }
