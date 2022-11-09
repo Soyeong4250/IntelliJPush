@@ -6,14 +6,14 @@ public class SelectionSort {
     private int solution(int[] numArr, int idx) {
         System.out.println(Arrays.toString(numArr));
         for (int i = 0; i < numArr.length-1; i++) {
-            int maxIdx = i;
+            int minIdx = i;
             for (int j = i+1; j < numArr.length; j++) {
-                if(numArr[maxIdx] < numArr[j]) {
-                    maxIdx = j;
+                if(numArr[j] < numArr[minIdx]) {
+                    minIdx = j;
                 }
             }
-            if(numArr[i] < numArr[maxIdx]) {
-                swapValue(numArr, i, maxIdx);
+            if(numArr[minIdx] < numArr[i]) {
+                swapValue(numArr, i, minIdx);
             }
             System.out.println(Arrays.toString(numArr));
         }
@@ -21,10 +21,10 @@ public class SelectionSort {
         return numArr[0];
     }
 
-    private void swapValue(int[] numArr, int i, int maxIdx) {
+    private void swapValue(int[] numArr, int i, int minIdx) {
         int temp = numArr[i];
-        numArr[i] = numArr[maxIdx];
-        numArr[maxIdx] = temp;
+        numArr[i] = numArr[minIdx];
+        numArr[minIdx] = temp;
     }
 
     public static void main(String[] args) {
