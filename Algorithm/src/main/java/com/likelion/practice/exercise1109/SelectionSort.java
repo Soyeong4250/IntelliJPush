@@ -18,7 +18,7 @@ public class SelectionSort {
             System.out.println(Arrays.toString(numArr));
         }
 
-        return numArr[0];
+        return numArr[idx];
     }
 
     private void swapValue(int[] numArr, int i, int minIdx) {
@@ -31,6 +31,9 @@ public class SelectionSort {
         SelectionSort selectionSort = new SelectionSort();
 
         int[] numArr = {2, 7, 4, 9, 10, 223, 111, 23, 3, 39};
+
+        // arr[0]번째에 들어갈 값 찾기
+        // 그 값이 들어있는 idx 찾기
         System.out.println(selectionSort.solution(numArr, 0));
     }
 }
