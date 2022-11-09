@@ -2,6 +2,7 @@ package com.likelion.practice.exercise1109;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 interface StatementStrategy {
@@ -40,6 +41,21 @@ public class SelectionSort {
         return numArr[idx];
     }
 
+    private int solution3(int[] numArr, int idx, BiPredicate<Integer, Integer> bp) {
+        for (int i = 0; i < numArr.length - 1; i++) {
+            int targetIdx = i;
+            for (int j = i+1; j < numArr.length; j++) {
+                if(bp.test(numArr[targetIdx], numArr[j])) {
+                    targetIdx = j;
+                }
+            }
+            swapValue(numArr, i, targetIdx);
+            System.out.println(Arrays.toString(numArr));
+        }
+
+        return numArr[idx];
+    }
+
     private void swapValue(int[] numArr, int i, int targetIdx) {
         int temp = numArr[i];
         numArr[i] = numArr[targetIdx];
@@ -61,5 +77,9 @@ public class SelectionSort {
 
         BiFunction<Integer, Integer, Boolean> biFunction = (a, b) -> a > b;   // 오름차순
         System.out.println(selectionSort.solution2(numArr, 0, biFunction));
+
+        BiPredicate<Integer, Integer> bp = (a, b) -> a > b;
+        System.out.println(bp.test(10, 20));
+        System.out.println(selectionSort.solution3(numArr, 0, bp));
     }
 }
