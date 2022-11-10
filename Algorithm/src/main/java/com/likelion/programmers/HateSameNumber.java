@@ -31,12 +31,12 @@ public class HateSameNumber {
     private int[] solution2(int[] arr) {
         Stack<Integer> stack = new Stack<>();
 
-        stack.add(arr[0]);
+        stack.push(arr[0]);
         for (int i = 1; i < arr.length; i++) {
             if(stack.peek() == arr[i]) {
                 continue;
             }else {
-                stack.add(arr[i]);
+                stack.push(arr[i]);
             }
         }
 
