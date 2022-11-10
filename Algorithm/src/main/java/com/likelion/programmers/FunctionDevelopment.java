@@ -7,7 +7,8 @@ public class FunctionDevelopment {
         Queue<Integer> overtime = new LinkedList<>();
 
         for (int i = 0; i < progresses.length; i++) {
-            overtime.offer((100 - progresses[i])%speeds[i] == 0 ? (100 - progresses[i])/speeds[i] : (100 - progresses[i])/speeds[i] + 1);
+            double remain = (100 - progresses[i])/(double)speeds[i];
+            overtime.add((int)(Math.ceil(remain)));
         }
 
         int complete = overtime.poll();
