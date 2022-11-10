@@ -33,9 +33,7 @@ public class HateSameNumber {
 
         stack.push(arr[0]);
         for (int i = 1; i < arr.length; i++) {
-            if(stack.peek() == arr[i]) {
-                continue;
-            }else {
+            if(stack.peek() != arr[i]) {
                 stack.push(arr[i]);
             }
         }
