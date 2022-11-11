@@ -8,8 +8,8 @@ public class SecretMap {  // 비밀지도
 
         // 1. Integer.toBinaryString()을 이용하여 arr1과 arr2의 각 수를 2진수 문자열로 바꾸기
         for (int i = 0; i < n; i++) {
-            String binary1 = Integer.toBinaryString(arr1[i]);
-            String binary2 = Integer.toBinaryString(arr2[i]);
+            String binary1 = addZero(n, Integer.toBinaryString(arr1[i]));
+            String binary2 = addZero(n, Integer.toBinaryString(arr2[i]));
 
             // 2. 반복문 2개를 이용하여 arr1과 arr2의 각 행의 문자열을 한글자씩 순회하기
             for (int j = 0; j < n; j++) {
@@ -23,6 +23,17 @@ public class SecretMap {  // 비밀지도
         }
 
         return resultMap;
+    }
+
+    private String addZero(int n, String binary) {
+        if(binary.length() < n) {
+            String zero = "";
+            for (int i = 0; i < n - binary.length(); i++) {
+                zero += "0";
+            }
+            binary = zero + binary;
+        }
+        return binary;
     }
 
     private void printArr(char[][] resultMap) {
