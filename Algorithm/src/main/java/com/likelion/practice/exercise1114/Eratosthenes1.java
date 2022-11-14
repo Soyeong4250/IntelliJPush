@@ -13,14 +13,23 @@ public class Eratosthenes1 {
             }
 
             System.out.println(Arrays.toString(arr));
-            System.out.println(i);
         }
+
+        StringBuilder prime = new StringBuilder();
+        prime.append("2~50 사이의 소수는 ");
+        for (int i = 0; i < arr.length; i++) {
+            if(arr[i] != 0) prime.append(arr[i] + " ");
+        }
+
+        System.out.println(prime.toString());
     }
 
     public static void main(String[] args) {
         Eratosthenes1 eratosthenes = new Eratosthenes1();
 
         int[] arr = new int[49];
+        
+        // 2~50 값 채우기
         for (int i = 0; i < arr.length; i++) {
             arr[i] = i+2;
         }
