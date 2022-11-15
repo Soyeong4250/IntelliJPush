@@ -16,7 +16,7 @@ public class QuickSort {  // 퀵 정렬
 
     private List<Integer> solution(List<Integer> arr) {
         // 재귀를 이용한 퀵 정렬
-
+        // 기저조건
         if(arr.size() <= 1) {
             return arr;
         }
