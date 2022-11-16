@@ -1,4 +1,4 @@
-package com.likelion.practice.exercise1101;
+package com.likelion.practice.exerciseNov1;
 
 interface StatementStrategy {
     boolean compare(int a, int b);

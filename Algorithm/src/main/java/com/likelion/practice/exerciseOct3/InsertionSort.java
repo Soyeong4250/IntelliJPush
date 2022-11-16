@@ -1,4 +1,4 @@
-package com.likelion.practice.exercise1014;
+package com.likelion.practice.exerciseOct3;
 
 import java.util.Arrays;
 

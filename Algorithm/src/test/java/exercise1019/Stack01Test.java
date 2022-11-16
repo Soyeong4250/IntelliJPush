@@ -1,4 +1,4 @@
-import com.likelion.practice.exercise1019.Stack01;
+import com.likelion.practice.exerciseOct4.Stack01;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

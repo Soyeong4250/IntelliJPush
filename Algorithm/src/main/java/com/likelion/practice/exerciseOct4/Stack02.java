@@ -1,4 +1,4 @@
-package com.likelion.practice.exercise1019;
+package com.likelion.practice.exerciseOct4;
 
 import java.util.EmptyStackException;
 

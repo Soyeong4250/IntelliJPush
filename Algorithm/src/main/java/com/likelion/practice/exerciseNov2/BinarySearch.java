@@ -1,4 +1,4 @@
-package com.likelion.practice.exercise1108;
+package com.likelion.practice.exerciseNov2;
 
 public class BinarySearch {
 

@@ -1,4 +1,4 @@
-package com.likelion.practice.exercise1019;
+package com.likelion.practice.exerciseOct4;
 
 public class Stack01 {
     private int[] arr = new int[10000];

@@ -1,7 +1,6 @@
-package com.likelion.practice.exervise1115;
+package com.likelion.practice.exerciseNov3;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class QuickSort {  // 퀵 정렬

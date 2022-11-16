@@ -1,6 +1,6 @@
 package exercise1021;
 
-import com.likelion.practice.exercise1021.Bracket2;
+import com.likelion.practice.exerciseOct4.Bracket2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

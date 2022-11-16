@@ -1,4 +1,4 @@
-package com.likelion.practice.exercise1021;
+package com.likelion.practice.exerciseOct4;
 
 import java.util.Stack;
 

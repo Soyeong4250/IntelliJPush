@@ -1,4 +1,4 @@
-package com.likelion.practice.exercise1109;
+package com.likelion.practice.exerciseNov2;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
