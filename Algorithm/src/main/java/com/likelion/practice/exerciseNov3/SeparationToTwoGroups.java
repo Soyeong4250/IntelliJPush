@@ -7,8 +7,8 @@ public class SeparationToTwoGroups {
         if(start >= end) return;
 
         int median = partition(arr, start, end);
-        solution(arr, start, median-1);
-        solution(arr, median, end);
+        solution(arr, start, median-1);  // 왼쪽 배열 재귀
+        solution(arr, median, end);  // 오른쪽 배열 재귀
     }
     private int partition(int[] arr, int start, int end) {
         int pivot = arr[(start+ end)/ 2];
@@ -18,7 +18,7 @@ public class SeparationToTwoGroups {
             while (arr[start] < pivot) start++;
             // pivot 오른쪽 값들은 pivot보다 크면 swap ❌ end--
             while (arr[end] > pivot) end--;
-            if (start <= end) {
+            if (start <= end) {  // start와 end가 같아도 비교하는 이유 : start와 end가 다른지 판단하기 위한 시간복잡도가 늘어나기 때문
                 swap(arr, start, end);
                 start++;
                 end--;
