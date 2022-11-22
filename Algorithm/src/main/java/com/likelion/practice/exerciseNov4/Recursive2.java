@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recursive2 {
-    private int sum(List<Integer> nums, int idx) {
-        if(idx == nums.size()-1) {
-            return nums.get(idx);
+    private int sum(List<Integer> nums) {
+        if(nums.size() == 1) {
+            return nums.get(0);
         }
 
-        int result = 0;
-        result = nums.get(idx) + sum(nums, idx+1);
+        int result = nums.get(0);
+        nums.remove(0);
+        result += sum(nums);
         return result;
     }
 
@@ -23,6 +24,6 @@ public class Recursive2 {
         nums.add(2);
         nums.add(9);
 
-        System.out.println(main.sum(nums, 0));
+        System.out.println(main.sum(nums));
     }
 }
