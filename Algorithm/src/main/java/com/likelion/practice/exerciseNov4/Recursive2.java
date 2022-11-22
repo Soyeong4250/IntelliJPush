@@ -5,14 +5,11 @@ import java.util.List;
 
 public class Recursive2 {
     private int sum(List<Integer> nums) {
-        if(nums.size() == 1) {
-            return nums.get(0);
+        if(nums.isEmpty()) {
+            return 0;
         }
 
-        int result = nums.get(0);
-        nums.remove(0);
-        result += sum(nums);
-        return result;
+        return nums.remove(nums.size()-1) + sum(nums);
     }
 
     public static void main(String[] args) {
