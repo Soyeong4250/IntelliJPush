@@ -1,19 +1,14 @@
 import java.util.Scanner;
 
 public class Main1860 { // [기초-재귀함수] 수 삼각형 출력하기
-    private void solution(int n, int depth, int num) {
-        if(num == depth) {
-            System.out.println(num);
-            solution(n, depth+1, 1);
-            return;
-        }
-
-        if(depth > n) {
-            return;
-        }
-
-        System.out.print(num + " ");
-        solution(n, depth, num+1);
+    private String getNums(int n) {
+        if(n == 1) return "1";
+        return getNums(n - 1) + " " + n;
+    }
+    private void solution(int n) {
+        if(n == 0)  return;
+        solution(n-1);
+        System.out.println(getNums(n));
     }
 
     public static void main(String[] args) {
@@ -21,6 +16,6 @@ public class Main1860 { // [기초-재귀함수] 수 삼각형 출력하기
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
-        main.solution(n, 1, 1);
+        main.solution(n);
     }
 }
