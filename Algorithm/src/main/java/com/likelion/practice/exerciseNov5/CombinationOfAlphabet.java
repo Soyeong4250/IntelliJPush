@@ -15,11 +15,25 @@ public class CombinationOfAlphabet {
         }
     }
 
+    private void combination2(String prefix) {
+        if(prefix.length() == 3) {
+            System.out.println(prefix);
+            return;
+        }
+
+        for (char ch = 'A'; ch <= 'Z'; ch++) {
+            combination2(prefix + ch);
+        }
+    }
+
     public static void main(String[] args) {
         CombinationOfAlphabet main = new CombinationOfAlphabet();
-        int select = 2;
+        int select = 3;
         char[] alphabet = new char[select];
+        System.out.println("-----conbination-----");
         main.combination(alphabet, 0);
         System.out.println(answer.toString());
+        System.out.println("-----conbination2-----");
+        main.combination2("");
     }
 }
