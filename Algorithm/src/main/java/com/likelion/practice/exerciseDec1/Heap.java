@@ -3,7 +3,7 @@ package com.likelion.practice.exerciseDec1;
 import java.util.Arrays;
 
 public class Heap {
-    private int[] sort(int[] arr, int parentIdx) {
+    private int[] makeHeap(int[] arr, int parentIdx) {
 
         int leftIdx = 2 * parentIdx + 1;
         int rightIdx = 2 * parentIdx + 2;
@@ -20,9 +20,12 @@ public class Heap {
         }
 
         // swap
-        int temp = arr[parentIdx];
-        arr[parentIdx] = arr[greaterIdx];
-        arr[greaterIdx] = temp;
+        if(greaterIdx != parentIdx) {
+            int temp = arr[parentIdx];
+            arr[parentIdx] = arr[greaterIdx];
+            arr[greaterIdx] = temp;
+            makeHeap(arr, greaterIdx);
+        }
 
         return arr;
     }
@@ -31,7 +34,10 @@ public class Heap {
         Heap main = new Heap();
 
         int[] arr = {6, 5, 7, 8};
-        System.out.println(Arrays.toString(main.sort(arr, 1)));
-        System.out.println(Arrays.toString(main.sort(arr, 0)));
+
+        for (int i = (arr.length-2)/2; i >= 0; i--) {
+            arr = main.makeHeap(arr, i);
+            System.out.println(Arrays.toString(arr));
+        }
     }
 }
