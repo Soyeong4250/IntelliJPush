@@ -25,6 +25,6 @@ public class Fibonacci {
 
         int n = 40;
         System.out.println(main.fibo(n));
-        System.out.println(main.fibo1(n, new long[n+1]));
+        System.out.println(main.fibo1(n));
     }
 }
