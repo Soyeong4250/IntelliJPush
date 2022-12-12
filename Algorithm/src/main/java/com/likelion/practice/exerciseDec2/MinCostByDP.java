@@ -11,7 +11,11 @@ public class MinCostByDP {
         for (int i = 1; i < arr.length; i++) {
             memo[0][i] = arr[0][i] + memo[0][i-1];
         }
-        
+
+        for (int j = 1; j < arr.length; j++) {
+            memo[j][0] = arr[j][0] + memo[j-1][0];
+        }
+
         print(memo);
 
         return 0;
