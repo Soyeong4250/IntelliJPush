@@ -6,19 +6,12 @@ public class MinCostByDP {
     private int solution(int[][] arr) {
         int[][] memo = new int[arr.length][arr[0].length];
 
-        memo[0][0] = arr[0][0];
-
-        for (int i = 1; i < arr.length; i++) {
-            memo[i][0] = arr[i][0] + memo[i-1][0];
-        }
-
-        for (int j = 1; j < arr.length; j++) {
-            memo[0][j] = arr[0][j] + memo[0][j-1];
-        }
-
-        for (int i = 1; i < arr.length; i++) {
-            for (int j = 1; j < arr[0].length; j++) {
-                memo[i][j] = arr[i][j] + Math.min(memo[i-1][j], Math.min(memo[i-1][j-1], memo[i][j-1]));
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                if(i == 0 && j == 0) memo[0][0] = arr[0][0];
+                else if(i == 0) memo[0][j] = arr[0][j] + memo[0][j-1];
+                else if(j == 0) memo[i][j] = arr[i][0] + memo[i-1][0];
+                else memo[i][j] = arr[i][j] + Math.min(memo[i-1][j], Math.min(memo[i-1][j-1], memo[i][j-1]));
             }
             print(memo);
             System.out.println("------------");
