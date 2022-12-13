@@ -7,27 +7,10 @@ public class SumUntil {
         int[][] dp = new int[coins.length][coins.length];
 
         for (int i = 0; i < coins.length; i++) {
-            dp[i][i] = coins[i];
-        }
-
-        for (int i = 0; i < coins.length-1; i++) {
-            dp[i][i+1] = dp[i][i] + dp[i+1][i+1];
-        }
-
-        for (int i = 0; i < coins.length-2; i++) {
-            dp[i][i+2] = dp[i][i+1] + dp[i+1][i+2];
-        }
-
-        for (int i = 0; i < coins.length-3; i++) {
-            dp[i][i+3] = dp[i][i+2] + dp[i+1][i+3];
-        }
-
-        for (int i = 0; i < coins.length-4; i++) {
-            dp[i][i+4] = dp[i][i+3] + dp[i+1][i+4];
-        }
-
-        for (int i = 0; i < coins.length-5; i++) {
-            dp[i][i+5] = dp[i][i+4] + dp[i+1][i+5];
+            for (int j = 0; j < coins.length - i; j++) {
+                if(i == 0) dp[j][j] = coins[j];
+                else dp[j][j+i] = dp[j][j+i-1] + dp[j+1][j+i];
+            }
         }
         print(dp);
 
