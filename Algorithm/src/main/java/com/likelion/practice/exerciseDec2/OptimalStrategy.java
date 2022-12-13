@@ -24,6 +24,12 @@ public class OptimalStrategy {  // 최적의 전략 찾기
             dp[i][i] = new Pair(coins[i], 0);
         }
 
+        for (int i = 0; i < coins.length-1; i++) {
+            int left = Math.max(coins[i], coins[i+1]);
+            int right = Math.min(coins[i], coins[i+1]);
+            dp[i][i+1] = new Pair(left, right);
+        }
+
         print(dp);
 
         return 0;
