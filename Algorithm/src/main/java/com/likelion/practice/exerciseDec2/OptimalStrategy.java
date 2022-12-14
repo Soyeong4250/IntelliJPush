@@ -1,5 +1,7 @@
 package com.likelion.practice.exerciseDec2;
 
+import java.util.Arrays;
+
 class Pair {
     int left;
     int right;
@@ -30,9 +32,22 @@ public class OptimalStrategy {  // 최적의 전략 찾기
             dp[i][i+1] = new Pair(left, right);
         }
 
+        for (int i = 2; i < coins.length; i++) {
+            for (int j = 0; j < coins.length - i; j++) {
+                int left = coins[j];
+                int right = coins[j+i];
+                int x = right + dp[j][j+i-1].right;
+                int y = left + dp[j+1][j+i].right;
+
+                int second = Math.min(dp[j+1][j+i].left, dp[j][j+i-1].left);
+
+                dp[j][j+i] = new Pair(Math.max(x, y), second);
+            }
+        }
+
         print(dp);
 
-        return 0;
+        return dp[0][coins.length-1].left;
     }
 
     private void print(Pair[][] dp) {
@@ -51,7 +66,8 @@ public class OptimalStrategy {  // 최적의 전략 찾기
 
     public static void main(String[] args) {
         OptimalStrategy main = new OptimalStrategy();
-        int[] coins = {2, 7, 40, 19, 4, 9};
+        int[] coins = {2, 7, 40, 19};
+        System.out.println(Arrays.toString(coins));
 
         System.out.println(main.solution(coins));
     }
